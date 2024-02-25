@@ -3,6 +3,8 @@ import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import PrelineScript from "./components/PrelineScript";
+import { Providers } from './providers'
+
 import Nav from "./components/Nav";
 config.autoAddCss = false;
 const inter = Inter({ subsets: ["latin"] });
@@ -17,7 +19,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
           <Nav/>        
-        {children}</body>
+          <Providers>{children}</Providers>
+          </body>
       <PrelineScript />
     </html>
   );
