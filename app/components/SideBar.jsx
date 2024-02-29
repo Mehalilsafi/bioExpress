@@ -24,10 +24,10 @@ export default function SideBar() {
     { icon: faComment, text: "About Us" },
   ];
   return (
-    <div className=" m-3">
+    <div className=" p-3 ">
       <button
         type="button"
-        className="text-gray-500 hover:text-gray-600"
+        className="text-gray-500 hover:text-gray-600 mt-16"
         data-hs-overlay="#docs-sidebar"
         aria-controls="docs-sidebar"
         aria-label="Toggle navigation"
@@ -49,7 +49,7 @@ export default function SideBar() {
 
       <div
         id="docs-sidebar"
-        className="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 start-0 bottom-0 z-[60] w-64 bg-white border-e border-gray-200 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 dark:bg-gray-800 dark:border-gray-700"
+        className="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 start-0 bottom-0 z-[60] w-64 bg-white border-e border-gray-200 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 dark:bg-gray-800 dark:border-gray-700 md:mt-[100px]  border border-transparent"
       >
         <div className="px-6 flex align-middle gap-3">
           <FontAwesomeIcon
@@ -61,7 +61,7 @@ export default function SideBar() {
             categories
           </h2>
         </div>
-        <div className="flex flex-col w-full justify-center gap-4 m-3 border-b-2 border-gray-200 border-solid">
+        <div className="flex flex-col w-full justify-center gap-4 m-3 border-b border-gray-200 border-solid">
           {items.map((item, index) => (
             <div
               key={index}

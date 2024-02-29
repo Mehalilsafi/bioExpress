@@ -10,7 +10,7 @@ import {
 
 export default function Nav() {
   return (
-    <header className="flex mx-3 w-full items-center justify-between ">
+    <header className="flex w-full items-center justify-between fixed top-0 bg-white z-[50] ">
       <Image src={logo} width={100} height={100} alt="Picture of the author" />
 
       <div className="relative">
@@ -20,7 +20,7 @@ export default function Nav() {
         />
         <input
           type="text"
-          className="py-3 px-4 pl-10 md:w-96 h-9 border-2 border-gray-200 border-solid rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+          className="py-3 px-4 pl-10 md:w-96 h-9 border border-gray-200 border-solid rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
           placeholder="Search your product here"
         />
       </div>
@@ -29,8 +29,6 @@ export default function Nav() {
         <FontAwesomeIcon icon={faCartShopping} className="text-xl font-light" />
         <FontAwesomeIcon icon={faUser} className="text-xl font-light" />
       </div>
-
-
     </header>
   );
 }
