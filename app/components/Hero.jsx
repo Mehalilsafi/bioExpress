@@ -1,24 +1,38 @@
 import React from "react";
 import Dropdown from "./Dropdown";
 import Image from "next/image";
-import gridImage from "@/assets/gridImage.png";
+import gridImage from "@/assets/gridImage.svg";
+import olive from "@/assets/olive.svg"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faStar,
+} from "@fortawesome/free-solid-svg-icons";
 export default function Hero() {
   const fakeTable = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
     <div className=" rounded-md m-4">
-      <div className="w-full flex justify-start gap-[15px]">
+      <div className="w-full flex justify-start gap-[35px] h-[30px] mb-1.5 border-b border-gray-200 border-solid">
         <p className="text-sm text-[#918B8B]">Healthy food</p>
         <p className="text-sm text-[#918B8B]">Organic food</p>
         <p className="text-sm text-[#918B8B]">Jam</p>
       </div>
-      <div className="flex flex-col sm:flex-row sm:justify-between mt-4">
-        <h1 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-0">
+      <div className="flex flex-col sm:flex-row sm:justify-between my-5">
+        <h1 className="text-xl sm:text-2xl font-medium mb-2 sm:mb-0">
           Showing Results for <span className="text-[#A4CE4A]">Food</span>
         </h1>
         <Dropdown />
       </div>
+      
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4  mt-5 ">
+
+
+
+
+
+      
+      <div className="flex justify-between gap-[20px] w-full">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 w-9/12  mt-7">
         {fakeTable.map((item, index) => (
           <div key={index}>
             <a
@@ -35,18 +49,43 @@ export default function Hero() {
                 />
               </div>
               <div className="p-4 md:p-5">
-                <h3 className="text-lg font-bold text-gray-800 dark:text-white">
-                  Card title
-                </h3>
-                <p className="mt-1 text-gray-500 dark:text-gray-400">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card content.
+                <div className="flex justify-between  ">
+
+
+                <h3 className="font-medium text-lg">Jam</h3>
+                <p className="font-medium text-lg text-[#996534] ">1000Da</p>
+                </div>
+
+                <div className="flex justify-between mt-3 ">
+                <div>
+
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                </div>
+                <p className=" text-gray-500 dark:text-gray-400 ">
+                 4.6
                 </p>
+                </div>
               </div>
             </a>
           </div>
         ))}
+      </div>  
+      <div className="h-full">
+      <Image
+                  className="mt-7"
+                  src={olive}
+                  width={200}
+                  height={400}
+                  alt="Image Description"
+                />
       </div>
+
+
+        </div>
     </div>
   );
 }

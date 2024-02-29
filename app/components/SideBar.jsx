@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import sidBarImage from "@/assets/sideBarImage.png";
+import sidBarImage from "@/assets/sidebare.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPizzaSlice,
