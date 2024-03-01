@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import produt from "@/assets/product.svg";
 import Counter from "./Counter";
+import Footer from "./Footer";
 export default function Hero() {
   const photoArr = [1, 2, 3];
   const [counter, setCounter] = useState(0);
@@ -59,6 +60,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
+  
+    <Footer/>
+
     </div>
   );
 }
