@@ -4,7 +4,10 @@ import Image from "next/image";
 import gridImage from "@/assets/gridImage.svg";
 import olive from "@/assets/olive.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+   faStar,
+  faHouse,
+} from "@fortawesome/free-solid-svg-icons";
 export default function Hero() {
   const fakeTable = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
@@ -14,14 +17,14 @@ export default function Hero() {
         <p className="text-sm text-[#918B8B]">Organic food</p>
         <p className="text-sm text-[#918B8B]">Jam</p>
       </div>
-      <div className="flex flex-col sm:flex-row sm:justify-between my-5">
-        <h1 className="text-xl sm:text-2xl font-medium mb-2 sm:mb-0">
+      <div className="flex flex-row justify-between items-center  my-5">
+        <h1 className="text-xl sm:text-2xl font-medium mb-2 sm:mb-0 p-3 md:p-0">
           Showing Results for <span className="text-[#A4CE4A]">Food</span>
         </h1>
         <Dropdown />
       </div>
 
-      <div className="flex justify-center flex-col--reverse  lg:flex-row lg:justify-between lg:gap-4 w-full">
+      <div className="flex justify-center items-center md:items-stretch flex-col  lg:flex-row lg:justify-between lg:gap-4 w-full ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 w-9/12  mt-7">
           {fakeTable.map((item, index) => (
             <div key={index}>
