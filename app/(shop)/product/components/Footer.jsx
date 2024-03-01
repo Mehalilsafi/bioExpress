@@ -9,8 +9,8 @@ export default function Footer() {
   return (
     <div className="mt-5">
       <h1 className="font-medium text-3xl">Seggestions</h1>
-      <div className=" flex flex-col gap-[10px] mt-5">
-        <div className="flex justify-between">
+      <div className=" flex flex-col md:flex-row gap-[10px] mt-5 md:w-full md:justify-between">
+        <div className="flex justify-between md:gap-5 ">
           {arr.map((ele) => (
             <Image
               src={footer}

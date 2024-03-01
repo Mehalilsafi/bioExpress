@@ -10,9 +10,9 @@ export default function Hero() {
   const [counter, setCounter] = useState(0);
 
   return (
-    <div className="m-3">
-      <div className="">
-        <div className="flex flex-col gap-[20px]">
+    <div className="m-6">
+      <div className="md:flex md:gap-8">
+        <div className="flex flex-col md:flex-row gap-[20px] md:col-span-2 md:w-6/12">
           <Image
             src={produt}
             width={500}
@@ -20,7 +20,7 @@ export default function Hero() {
             alt="Picture of the author"
           />
 
-          <div className="flex items-center justify-between ">
+          <div className="flex flex-row md:flex-col items-center justify-between md:justify-center  md:gap-[15px] ">
             {photoArr.map((ele) => (
               <Image
                 src={produt}
@@ -33,7 +33,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className=" flex flex-col gap-3 mt-4">
+        <div className=" flex flex-col gap-3 md:gap-6  mt-4 md:w-6/12">
           <h1 className="font-medium text-3xl"> Jam </h1>
           <p className="font-medium text-sm ">
             {" "}
