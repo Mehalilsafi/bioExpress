@@ -7,6 +7,7 @@ import {
   faCartShopping,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export default function Nav() {
   return (
@@ -26,7 +27,7 @@ export default function Nav() {
       </div>
 
       <div className="flex justify-start items-center gap-[15px] p-2.5 m-1.5  ">
-        <FontAwesomeIcon icon={faCartShopping} className="text-xl font-light" />
+       <Link href="/wishlist"><FontAwesomeIcon icon={faCartShopping} className="text-xl font-light" /></Link> 
         <FontAwesomeIcon icon={faUser} className="text-xl font-light" />
       </div>
     </header>
