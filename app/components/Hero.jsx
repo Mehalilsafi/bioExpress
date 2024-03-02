@@ -13,13 +13,13 @@ export default function Hero() {
       productId: 1,
       productName: "Jam",
       productPrice: 10.99,
-      url: gridImage,
+      url:gridImage,
     },
     {
       productId: 2,
       productName: "orange",
       productPrice: 15.99,
-      url: gridImage,
+      url:gridImage,
     },
     {
       productId: 3,
@@ -31,13 +31,13 @@ export default function Hero() {
       productId: 4,
       productName: "meat",
       productPrice: 18.49,
-      url: gridImage,
+      url:gridImage,
     },
     {
       productId: 5,
       productName: "banana",
       productPrice: 12.99,
-      url: gridImage,
+      url:gridImage,
     },
    
   ];
