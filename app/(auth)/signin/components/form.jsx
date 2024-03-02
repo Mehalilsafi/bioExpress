@@ -3,7 +3,7 @@ import Login from '@/assets/login.svg';
 import Image from 'next/image';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import{
-    faGoogle
+    faGoogle,
 
 }from "@fortawesome/free-solid-svg-icons";
 
