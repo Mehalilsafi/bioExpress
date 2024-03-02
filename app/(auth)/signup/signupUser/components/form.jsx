@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '@/assets/login.svg';
+import signup from '@/assets/signup.svg';
 import Image from 'next/image';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import{
@@ -8,12 +8,18 @@ import{
 }from "@fortawesome/free-solid-svg-icons";
 
 
-const SignIn = () => {
+const UserSignup = () => {
 return (
-    <div className="flex items-center justify-center h-screen ">
-
+    <div className="flex items-center justify-center h-screen">
+        <div className="hidden md:flex items-center justify-center">
+        <div className="w-500 h-500">
+            
+            <Image src={signup} alt="Welcome SVG" layout="fill " />
+        </div>
+        </div>
+    {/* Container for the Form and SVG Picture */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-    
+        {/* Left Side - Form */}
         <div className="flex flex-col items-center justify-center bg-[#EBF1E1] p-10 rounded-md">
         <h2 className="text-2xl  mb-10">Welcome!</h2>
 
@@ -53,16 +59,11 @@ return (
         </form>
         </div> 
 
-
-        <div className="hidden md:flex items-center justify-center">
-        <div className="w-500 h-500">
-            
-            <Image src={Login} alt="Welcome SVG" layout="fill " />
-        </div>
-        </div>
+        {/* Right Side - SVG Picture */}
+    
     </div>
     </div>
 );
 };
 
-export default SignIn;
+export default UserSignup;
