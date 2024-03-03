@@ -21,7 +21,7 @@ const UserSignup = () => {
                 <div className="flex flex-col items-center justify-center bg-[#EBF1E1] p-10 rounded-md">
                     <h2 className="text-2xl mb-10 font-bold">Join Us!</h2>
 
-        <form className="flex flex-col">
+        <form className="flex flex-col w-full">
 
 
             <label for="input-label" className="block text-sm font-medium mb-2 dark:text-white text-[#918A8A]">Username</label>
