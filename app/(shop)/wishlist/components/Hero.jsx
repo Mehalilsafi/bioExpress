@@ -7,7 +7,7 @@ import olive from "@/assets/olive.svg";
 import product from "@/assets/product.svg";
 import Counter from "./Counter";
 export default function Hero() {
-  const [counter, setCounter] = useState(0);
+ 
   const photoArr = [1, 2, 3];
   return (
     <div className="m-4">
@@ -68,7 +68,7 @@ export default function Hero() {
                 </p>
               </div>
               <div className="flex items-end gap-[10px]">
-                <Counter counter={counter} setCounter={setCounter} />
+                <Counter  />
                 <FontAwesomeIcon icon={faTrash} className="mb-3" />
               </div>
             </div>
