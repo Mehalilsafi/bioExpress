@@ -16,15 +16,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
-      
-        <>
-          <Nav />
-        </>
+      <>
+        <Nav />
+      </>
 
-        <Providers>{children}</Providers>
-     
+      <Providers>{children}</Providers>
+
       <PrelineScript />
-    
     </>
   );
 }
