@@ -14,10 +14,10 @@ return (
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
     
-        <div className="flex flex-col items-center justify-center bg-[#EBF1E1] p-10 rounded-md">
+        <div className="flex flex-col items-center justify-center bg-[#EBF1E1] p-5 rounded-md">
         <h2 className="text-2xl  mb-10">Welcome!</h2>
 
-        <form className="flex flex-col">
+        <form className="flex flex-col w-full">
 
         <label for="input-label" className="block text-sm font-medium mb-2 dark:text-white text-[#918A8A]">Email</label>
 
@@ -45,11 +45,11 @@ return (
 
             </div>
 
-            <p className="mt-6 text-[#4d464caa]">Or use social media to sign in:</p>
+            {/* <p className="mt-6 text-[#4d464caa]">Or use social media to sign in:</p>
             <div className="flex justify-between mt-3">
                 
                     <FontAwesomeIcon icon={faGoogle} />
-                </div>
+                </div> */}
         </form>
         </div> 
 

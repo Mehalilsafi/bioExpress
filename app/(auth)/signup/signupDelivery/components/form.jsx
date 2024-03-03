@@ -10,7 +10,7 @@ const DeliverySignup = () => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center h-screen gap-8 mx-auto ">
         
-        <div className="hidden md:flex items-center justify-center">
+        <div className="hidden md:flex items-center justify-center ">
         <div className=" flex flex-col items-center justify-center">
             <h2 className='text-[#918A8A] mb-4'>Join Bio Express Community!</h2>
             <Image src={Delivery} alt="Welcome SVG" width={500} height={500}/>
@@ -22,7 +22,7 @@ const DeliverySignup = () => {
                 < div className="flex flex-col items-center justify-center bg-[#EBF1E1] p-8 rounded-md ">
                     
         
-        <form className="flex flex-col  ">
+        <form className="flex flex-col w-full ">
 
 
             <label for="input-label" className="block text-sm font-medium mb-2 dark:text-white text-[#918A8A]">Your full name</label>
