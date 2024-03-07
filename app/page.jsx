@@ -19,7 +19,7 @@ export default function Home() {
           className=" col-span-5 md:col-span-4 bg-[#EBF1E1] rounded-md border border-gray-200 border-solid mt-[70px]"
           style={{ minWidth: "70%" }}
         >
-          <Hero />
+          <Hero/>
         </div>
       </div>
     </>
