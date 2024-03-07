@@ -9,7 +9,8 @@ export default function Product({productId,productUrl,productName,productPrice})
 function handlClick(){
   router.push(`/${productId}`)
 }
-  return (
+  return (    
+
     <div  className="relative group">
     <div className="relative">
       <a

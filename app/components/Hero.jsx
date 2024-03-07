@@ -20,8 +20,8 @@ import gridImage from "@/assets/gridImage.svg"; // SVG asset for grid images
 import olive from "@/assets/olive.svg"; // SVG asset for olives
 
 
-export default function Hero() {
-  const productData = getProduct();
+export default async function Hero() {
+  const productData =  await getProduct();
   console.log("my data ", productData);
   return (
     <div className=" rounded-md m-4">
