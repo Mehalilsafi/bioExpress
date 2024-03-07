@@ -1,13 +1,17 @@
-import React from "react";
-import Image from "next/image";
-import logo from "@/assets/logo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react"; // React components
+
+import Image from "next/image"; // Next.js component for optimized images
+import Link from "next/link"; // Next.js component for routing
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Font Awesome icon component
 import {
   faMagnifyingGlass,
   faCartShopping,
   faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+} from "@fortawesome/free-solid-svg-icons"; // Specific Font Awesome icons
+
+import logo from "@/assets/logo.png"; // Image asset for logo
+
 
 export default function Nav() {
   return (

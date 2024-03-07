@@ -1,13 +1,25 @@
-import React from "react";
-import Dropdown from "./Dropdown";
-import Link from "next/link";
-import Image from "next/image";
-import gridImage from "@/assets/gridImage.svg";
-import olive from "@/assets/olive.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faHouse } from "@fortawesome/free-solid-svg-icons";
-import getProduct from "@/lib/getProduct";
-import Product from "./Product";
+import React from "react"; // React components
+
+// Custom components
+import Dropdown from "./Dropdown"; // Custom component for dropdown functionality
+import Product from "./Product"; // Custom component for displaying products
+
+// Next.js components
+import Link from "next/link"; // Next.js component for routing
+import Image from "next/image"; // Next.js component for optimized images
+
+// Font Awesome components
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Font Awesome icon component
+import { } from "@fortawesome/free-solid-svg-icons"; // Specific Font Awesome icons
+
+// Functions
+import getProduct from "@/lib/getProduct"; // Function for retrieving product data
+
+// SVG assets
+import gridImage from "@/assets/gridImage.svg"; // SVG asset for grid images
+import olive from "@/assets/olive.svg"; // SVG asset for olives
+
+
 export default function Hero() {
   const productData = getProduct();
   console.log("my data ", productData);
