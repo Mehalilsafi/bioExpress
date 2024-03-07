@@ -1,9 +1,14 @@
-
+'use client'
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, } from "@fortawesome/free-solid-svg-icons";
-export default function Product({id,productUrl,productName,productPrice}) {
+import { useRouter } from "next/navigation";
+export default function Product({productId,productUrl,productName,productPrice}) {
+    const router=useRouter()
+function handlClick(){
+  router.push(`/${productId}`)
+}
   return (
     <div  className="relative group">
     <div className="relative">
@@ -61,7 +66,10 @@ export default function Product({id,productUrl,productName,productPrice}) {
           </button>
         </Link>
     
-          <button className="bg-green-500 text-white px-4 py-2 rounded-md">
+          <button 
+          className="bg-green-500 text-white px-4 py-2 rounded-md"
+          onClick={handlClick}
+          >
             Order Now
           </button>
         
