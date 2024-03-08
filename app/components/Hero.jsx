@@ -20,8 +20,8 @@ import gridImage from "@/assets/gridImage.svg"; // SVG asset for grid images
 import olive from "@/assets/olive.svg"; // SVG asset for olives
 
 
-export default async function Hero() {
-  const productData =  await getProduct();
+export default  function Hero() {
+  const productData =   getProduct();
   console.log("my data ", productData);
   return (
     <div className=" rounded-md m-4">
@@ -42,7 +42,7 @@ export default async function Hero() {
           {productData.map((product) => (
             <Product
               key={product.productId}
-              id={product.productId}
+              productId={product.productId}
               productName={product.productName}
               productPrice={product.productPrice}
               productUrl={product.url}

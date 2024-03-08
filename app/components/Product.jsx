@@ -6,7 +6,9 @@ import { faStar, } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 export default function Product({productId,productUrl,productName,productPrice}) {
     const router=useRouter()
+    console.log(productId + 'prduct id is here **************')
 function handlClick(){
+ 
   router.push(`/${productId}`)
 }
   return (    
