@@ -17,7 +17,7 @@ const PubsSlider = () => {
                     fill={true}
                     objectFit='cover'
                 />
-                <p className='legend'>Legend 1</p>
+                <p className='legend'>product 1</p>
             </div>
             <div>
                 <Image
@@ -26,7 +26,7 @@ const PubsSlider = () => {
                     fill={true}
                     objectFit='cover'
                 />
-                <p className='legend'>Legend 2</p>
+                <p className='legend'>product 2</p>
             </div>
         </Carousel>
     );

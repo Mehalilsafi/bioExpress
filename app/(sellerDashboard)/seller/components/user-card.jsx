@@ -1,7 +1,7 @@
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 import { MdAccountCircle } from 'react-icons/md';
 import Image from 'next/image';
-import Logo from '../../../../../public/bioExpress.png';
+import Logo from '@/assets/logo.svg';
 
 import { RiLogoutBoxLine } from 'react-icons/ri';
 
