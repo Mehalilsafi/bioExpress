@@ -8,7 +8,7 @@ import {
 
 const UserSignup = () => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center h-screen gap-8 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center h-screen gap-8 mx-auto p-20 ">
         
             <div className="hidden md:flex items-center justify-center">
                 <div className="w-100 h-100">
