@@ -4,7 +4,7 @@
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-4xl bg-[#EBF1E1] p-6 mt-20 ">
             <h1 className="col-span-2 text-center text-2xl mb-6 text-[#535151]">
-                Join Bio Express Community!
+                Join Bio Express Community
             </h1>
 
         <div>
