@@ -1,3 +1,4 @@
+
 import React from "react"; // React components
 
 // Custom components
@@ -10,7 +11,7 @@ import Image from "next/image"; // Next.js component for optimized images
 
 // Font Awesome components
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Font Awesome icon component
-import { } from "@fortawesome/free-solid-svg-icons"; // Specific Font Awesome icons
+import {} from "@fortawesome/free-solid-svg-icons"; // Specific Font Awesome icons
 
 // Functions
 import getProduct from "@/lib/getProduct"; // Function for retrieving product data
@@ -19,10 +20,25 @@ import getProduct from "@/lib/getProduct"; // Function for retrieving product da
 import gridImage from "@/assets/gridImage.svg"; // SVG asset for grid images
 import olive from "@/assets/olive.svg"; // SVG asset for olives
 
-
-export default  function Hero() {
-  const productData =   getProduct();
-  console.log("my data ", productData);
+export default function Hero() {
+  const productData = getProduct();
+  async function addTWishList() {
+    "use server";
+    const productKey = "product";
+    const currentProduct = JSON.parse(localStorage.getItem(productKey)) || [];
+    const newProduct = {
+      productId: productData.productId,
+      productName: productData.productName,
+      productPrice: productData.productPrice,
+      productUrl: productData.productUrl,
+    };
+    localStorage.setItem(
+      productKey,
+      JSON.stringify([...currentProduct, newProduct])
+    );
+   
+  }
+ 
   return (
     <div className=" rounded-md m-4">
       <div className="w-full flex justify-start gap-[35px] h-[30px] mb-1.5 border-b border-gray-200 border-solid">
@@ -46,6 +62,7 @@ export default  function Hero() {
               productName={product.productName}
               productPrice={product.productPrice}
               productUrl={product.url}
+              addTWishList={addTWishList}
             />
           ))}
         </div>
