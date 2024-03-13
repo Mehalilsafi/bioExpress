@@ -11,26 +11,11 @@ export default function Product({
   productUrl,
   productName,
   productPrice,
-}) {
+},addTWishList) {
   const [product,setProduct]=useState([])
-  function addTWishList(){
-    const currentProduct=JSON.parse(localStorage.getItem(product))||[]
-    
-    localStorage.setItem('product',
-    JSON.stringify([{
-      productId:productId,
-      productUrl:productUrl,
-      productName:productName,
-      productPrice:productPrice
-    },...currentProduct]
-
-    ))
-   
-   
-
-  }
+  console.log(addTWishList+"wislist funtion ")
   const router = useRouter();
-  console.log(productId + "prduct id is here **************");
+
   function handlClick() {
     router.push(`/${productId}`);
   }
@@ -73,7 +58,7 @@ export default function Product({
          
             <button
              className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
-             onClick={addTWishList}
+             onClick={()=>addTWishList()}
              >
               Add to Cart
             </button>
