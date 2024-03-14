@@ -19,12 +19,11 @@ import getProduct from "@/lib/getProduct"; // Function for retrieving product da
 // SVG assets
 import gridImage from "@/assets/gridImage.svg"; // SVG asset for grid images
 import olive from "@/assets/olive.svg"; // SVG asset for olives
-
+import {useCartStore} from "@/lib/stor";
 export default function Hero() {
   const productData = getProduct();
  
 
- 
   return (
     <div className=" rounded-md m-4">
       <div className="w-full flex justify-start gap-[35px] h-[30px] mb-1.5 border-b border-gray-200 border-solid">

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
-import useCartStore from "@/lib/stor";
+import {useCartStore} from "@/lib/stor";
 
 export default function Product({
   productId,
