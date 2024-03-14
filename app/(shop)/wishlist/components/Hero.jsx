@@ -5,14 +5,13 @@ import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import olive from "@/assets/olive.svg";
 import Counter from "./Counter";
-import {useCartStore} from "@/lib/stor";
-import getProduct from '@/lib/getProduct'
-
+import { useCartStore } from "@/lib/stor";
+import getProduct from "@/lib/getProduct";
 export default function Hero() {
-  const cartItems =useCartStore((state)=> state.cartItems)
-  const Products  = getProduct()
-  console.log('prduct Data is here '+cartItems)
-  const photoArr = [1, 2, 3]; 
+  const cartItems = useCartStore((state) => state.cartItems);
+  const Products = getProduct();
+  console.log("prduct Data is here " + cartItems);
+
   return (
     <div className="m-4">
       <div className="flex justify-between">
@@ -72,7 +71,7 @@ export default function Hero() {
                 </p>
               </div>
               <div className="flex items-end gap-[10px]">
-                <Counter  />
+                <Counter />
                 <FontAwesomeIcon icon={faTrash} className="mb-3" />
               </div>
             </div>

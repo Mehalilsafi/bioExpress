@@ -2,11 +2,11 @@ import Image from "next/image";
 import SideBar from "./components/SideBar";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
 export default function Home() {
   return (
     <>
+    
+      {/* Your application components */}
       <Nav />
       <div className="grid grid-cols-5  mx-auto px-4 mt-5 ">
         <div
@@ -22,6 +22,7 @@ export default function Home() {
           <Hero/>
         </div>
       </div>
+   
     </>
   );
 }
