@@ -7,6 +7,9 @@ export default function Signup() {
         <div>
             <NavBar/>
             <UserSignup/>
+            
+            
+            
             </div>
     )
 }

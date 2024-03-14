@@ -5,10 +5,10 @@ import Logo from '@/assets/logo.svg';
 import Image from 'next/image';
 const NavBar = () => {
     return (
-        <div className=" p-4 flex justify-between items-center fixed w-full z-10">
+        <nav className=" p-4 flex justify-between items-center fixed top-0 w-full z-10 ">
         
             <div className="flex items-center">
-                <div className="w-100 h-8 mr-5">
+                <div className="w-100 mr-5">
 
                 <Image src={Logo} alt="Logo" />
                 </div>
@@ -30,7 +30,7 @@ const NavBar = () => {
             </button>
 
             </div>
-        </div>
+        </nav>
     );
     };
 
