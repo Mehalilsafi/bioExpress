@@ -1,19 +1,28 @@
 "use client";
-import React,{useState} from "react"; // React components
+import React, { useState } from "react"; // React components
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
-import { prototype } from "postcss/lib/input";
+import useCartStore from "@/lib/stor";
+
 export default function Product({
   productId,
   productUrl,
   productName,
   productPrice,
-},addTWishList) {
-  const [product,setProduct]=useState([])
-  console.log(addTWishList+"wislist funtion ")
+}) {
+  const { addItemToCart } = useCartStore();
+  const product = {
+    productId: productId,
+    productUrl: productUrl,
+    productName: productName,
+    productPrice: productPrice,
+  };
+  function handlleCart() {
+    addItemToCart(product);
+  }
   const router = useRouter();
 
   function handlClick() {
@@ -55,14 +64,12 @@ export default function Product({
           </div>
         </a>
         <div className="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
-         
-            <button
-             className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
-             onClick={()=>addTWishList()}
-             >
-              Add to Cart
-            </button>
-       
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
+            onClick={handlleCart}
+          >
+            Add to Cart
+          </button>
 
           <button
             className="bg-green-500 text-white px-4 py-2 rounded-md"

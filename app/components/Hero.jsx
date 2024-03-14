@@ -22,22 +22,8 @@ import olive from "@/assets/olive.svg"; // SVG asset for olives
 
 export default function Hero() {
   const productData = getProduct();
-  async function addTWishList() {
-    "use server";
-    const productKey = "product";
-    const currentProduct = JSON.parse(localStorage.getItem(productKey)) || [];
-    const newProduct = {
-      productId: productData.productId,
-      productName: productData.productName,
-      productPrice: productData.productPrice,
-      productUrl: productData.productUrl,
-    };
-    localStorage.setItem(
-      productKey,
-      JSON.stringify([...currentProduct, newProduct])
-    );
-   
-  }
+ 
+
  
   return (
     <div className=" rounded-md m-4">
@@ -62,7 +48,6 @@ export default function Hero() {
               productName={product.productName}
               productPrice={product.productPrice}
               productUrl={product.url}
-              addTWishList={addTWishList}
             />
           ))}
         </div>
