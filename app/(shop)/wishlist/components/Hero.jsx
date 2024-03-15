@@ -8,12 +8,26 @@ import Product from "./Product";
 import { useCartStore } from "@/lib/stor";
 import getProduct from "@/lib/getProduct";
 import Link from "next/link";
+
 export default function Hero() {
   const cartItems = useCartStore((state) => state.cartItems);
- 
-  const Products = getProduct();
+  const [selectedProducts, setSelectedProducts] = useState([]);
 
-  console.log("prduct Data is here " + cartItems);
+  const handleSelectAll = () => {
+    if (selectedProducts.length === cartItems.length) {
+      setSelectedProducts([]);
+    } else {
+      setSelectedProducts([...cartItems.map((item) => item.productId)]);
+    }
+  };
+
+  const handleSelectProduct = (productId) => {
+    if (selectedProducts.includes(productId)) {
+      setSelectedProducts(selectedProducts.filter((id) => id !== productId));
+    } else {
+      setSelectedProducts([...selectedProducts, productId]);
+    }
+  };
 
   return (
     <div className="m-4">
@@ -25,7 +39,7 @@ export default function Hero() {
           />
           <h1 className="text-2xl font-bold">Wish List</h1>
         </div>
-        {<p className="">{`Cart -> Place order -> Pay -> Order Complete`}</p>}
+        <p className="">{`Cart -> Place order -> Pay -> Order Complete`}</p>
       </div>
       <div className="flex justify-between mt-4">
         <div className="flex  items-center">
@@ -33,6 +47,8 @@ export default function Hero() {
             type="checkbox"
             className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
             id="hs-default-checkbox"
+            checked={selectedProducts.length === cartItems.length}
+            onChange={handleSelectAll}
           />
           <label
             htmlFor="hs-default-checkbox"
@@ -50,7 +66,11 @@ export default function Hero() {
       </div>
       <div className=" flex flex-col md:flex-row gap-5 mt-5">
         {cartItems && cartItems.length > 0 ? (
-          <Product Products={cartItems} />
+          <Product
+            Products={cartItems}
+            selectedProducts={selectedProducts}
+            onSelect={handleSelectProduct}
+          />
         ) : (
           <div className="h-72 flex flex-col items-center justify-center">
             <h2 className="text-3xl mt-10 mb-5 font-bold">Cart is Empty</h2>
