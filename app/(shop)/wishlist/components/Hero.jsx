@@ -6,7 +6,6 @@ import Image from "next/image";
 import olive from "@/assets/olive.svg";
 import Product from "./Product";
 import { useCartStore } from "@/lib/stor";
-import getProduct from "@/lib/getProduct";
 import Link from "next/link";
 
 export default function Hero() {

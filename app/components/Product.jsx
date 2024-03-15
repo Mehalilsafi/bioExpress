@@ -15,6 +15,7 @@ export default function Product({
   productName,
   productPrice,
 }) {
+  const cartItems = useCartStore((state) => state.cartItems);
   const { addItemToCart } = useCartStore();
   const product = {
     productId: productId,
@@ -22,10 +23,22 @@ export default function Product({
     productName: productName,
     productPrice: productPrice,
   };
-  function handlleCart() {
-    addItemToCart(product);
-   toast.success('Item added to cart successfully!');
-  }
+  
+    function handleCart() {
+      
+      const isProductInCart = cartItems.some(item => item.productId === product.productId);
+    
+      if (isProductInCart) {
+      
+        toast.error('Item is already in the cart!');
+      } else {
+       
+        addItemToCart(product);
+        toast.success('Item added to cart successfully!');
+      }
+    }
+    
+  
   const router = useRouter();
 
   function handlClick() {
@@ -69,7 +82,7 @@ export default function Product({
         <div className="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
-            onClick={handlleCart}
+            onClick={handleCart}
           >
             Add to Cart
           </button>
