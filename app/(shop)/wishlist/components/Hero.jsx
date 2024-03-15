@@ -10,6 +10,7 @@ import getProduct from "@/lib/getProduct";
 import Link from "next/link";
 export default function Hero() {
   const cartItems = useCartStore((state) => state.cartItems);
+ 
   const Products = getProduct();
 
   console.log("prduct Data is here " + cartItems);
@@ -48,13 +49,13 @@ export default function Hero() {
         </button>
       </div>
       <div className=" flex flex-col md:flex-row gap-5 mt-5">
-        {cartItems && cartItems > 1 ? (
-          <Product Products={Products} />
+        {cartItems && cartItems.length > 0 ? (
+          <Product Products={cartItems} />
         ) : (
           <div className="h-72 flex flex-col items-center justify-center">
             <h2 className="text-3xl mt-10 mb-5 font-bold">Cart is Empty</h2>
             <Link
-              href ="/"
+              href="/"
               className="px-6 py-2 rounded-md text-white bg-[#A4CE4A]"
             >
               Go to home page

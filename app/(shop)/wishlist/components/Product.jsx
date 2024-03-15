@@ -3,7 +3,14 @@ import Image from 'next/image'
 import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Counter from "./Counter";
+import { useCartStore } from "@/lib/stor";
+
 export default function Product({Products}) {
+    const {deleteItemFromCart} = useCartStore()
+
+    function handleDelete(productId){
+        deleteItemFromCart(productId)
+    }
   return (
     
     <div className="flex flex-col gap-5 ">
@@ -32,7 +39,11 @@ export default function Product({Products}) {
         </div>
         <div className="flex items-end gap-[10px]">
           <Counter />
-          <FontAwesomeIcon icon={faTrash} className="mb-3" />
+          <FontAwesomeIcon 
+          icon={faTrash} 
+          className="mb-3" 
+          onClick={() => handleDelete(Products.productId)}
+          />
         </div>
       </div>
     ))}
