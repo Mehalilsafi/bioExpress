@@ -10,13 +10,13 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons"; // Specific Font Awesome icons
 
-import logo from "@/assets/logo.png"; // Image asset for logo
+import logo from "@/assets/logo.svg"; // Image asset for logo
 
 
 export default function Nav() {
   return (
     <header className="flex w-full items-center justify-between fixed top-0 bg-white z-[50] ">
-      <Image src={logo} width={100} height={100} alt="Picture of the author" />
+      <Image src={logo} width={130}  alt="Picture of the author" />
 
       <div className="relative">
         <FontAwesomeIcon
