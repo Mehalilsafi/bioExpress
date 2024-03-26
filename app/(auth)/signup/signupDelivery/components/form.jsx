@@ -1,6 +1,7 @@
 import React from 'react';
 import Delivery from '@/assets/DeliverySignup.svg';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faGoogle
@@ -69,13 +70,14 @@ const DeliverySignup = () => {
 
 
                 <div className="flex justify-center">
+                <Link href="/thanku">
                 <button
                 type="button"
-                className="py-2 px-2 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-[#A4CE4A] hover:border-[#eaffe9]  disabled:opacity-50 disabled:pointer-events-none dark:border-white dark:text-white dark:hover:text-gray-300 dark:hover:border-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 bg-[#A4CE4A] mt-7"
+                className="py-4 px-10 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-[#A4CE4A] hover:border-[#eaffe9]  disabled:opacity-50 disabled:pointer-events-none dark:border-white dark:text-white dark:hover:text-gray-300 dark:hover:border-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 bg-[#A4CE4A] mt-7 "
                 >
                     Submit
                 </button>
-
+                </Link>
                 </div>
 
                 

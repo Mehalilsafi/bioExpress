@@ -5,17 +5,17 @@ const ThankuPage = () => {
     return (
         <div className="flex flex-col items-center justify-center h-screen">
         {/* Thank You Picture */}
-        <div className="w-300 h-300 flex items-center justify-center">
-            <Image src={Thanku} alt="Thank You" />
+        <div className=" flex items-center justify-center">
+            <Image src={Thanku} alt="Thank You" width={500} height={500} />
         </div>
 
-        {/* Thank You Message */}
-        <div className="mt-4 font-bold">
+    
+        <div className="mt-2 font-medium text-4xl ">
             <h2>Thanks for signing up!</h2>
         </div>
 
-        {/* Paragraph */}
-        <div className="mt-2 break-words text-center">
+
+        <div className="mt-4 text-center text-lg text-[#707070]">
             <p>
             Thank you for submitting your application! Our team will carefully review it, and we will reach out to you via email within [...] with the status of your application.
             </p>

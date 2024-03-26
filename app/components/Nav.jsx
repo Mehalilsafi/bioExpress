@@ -10,18 +10,18 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons"; // Specific Font Awesome icons
 
-import logo from "@/assets/logo.png"; // Image asset for logo
+import logo from "@/assets/logo.svg"; // Image asset for logo
 
 
 export default function Nav() {
   return (
-    <header className="flex w-full items-center justify-between fixed top-0 bg-white z-[50] ">
-      <Image src={logo} width={100} height={100} alt="Picture of the author" />
+    <header className="flex w-full items-center justify-between fixed top-0 bg-white z-[50] ml-4 ">
+      <Image src={logo} width={130}  alt="Picture of the author" />
 
       <div className="relative">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
-          className="absolute inset-y-0 left-0 pl-3 self-center mt-3  text-gray-400 pointer-events-none md:mt-3 "
+          className="absolute inset-y-0 left-0 pl-3  mt-3  text-gray-400 pointer-events-none md:mt-3 "
         />
         <input
           type="text"
@@ -30,8 +30,8 @@ export default function Nav() {
         />
       </div>
 
-      <div className="flex justify-start items-center gap-[15px] p-2.5 m-1.5  ">
-       <Link href="/wishlist"><FontAwesomeIcon icon={faCartShopping} className="text-xl font-light" /></Link> 
+      <div className="flex justify-start items-center gap-[15px] p-2.5 mr-5  ">
+      <Link href="/wishlist"><FontAwesomeIcon icon={faCartShopping} className="text-xl font-light" /></Link> 
         <FontAwesomeIcon icon={faUser} className="text-xl font-light" />
       </div>
     </header>
