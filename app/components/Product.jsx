@@ -5,9 +5,9 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import {useCartStore} from "@/lib/stor";
+import { useCartStore } from "@/lib/stor";
 
 export default function Product({
   productId,
@@ -23,22 +23,20 @@ export default function Product({
     productName: productName,
     productPrice: productPrice,
   };
-  
-    function handleCart() {
-      
-      const isProductInCart = cartItems.some(item => item.productId === product.productId);
-    
-      if (isProductInCart) {
-      
-        toast.error('Item is already in the cart!');
-      } else {
-       
-        addItemToCart(product);
-        toast.success('Item added to cart successfully!');
-      }
+
+  function handleCart() {
+    const isProductInCart = cartItems.some(
+      (item) => item.productId === product.productId
+    );
+
+    if (isProductInCart) {
+      toast.error("Item is already in the cart!");
+    } else {
+      addItemToCart(product);
+      toast.success("Item added to cart successfully!");
     }
-    
-  
+  }
+
   const router = useRouter();
 
   function handlClick() {

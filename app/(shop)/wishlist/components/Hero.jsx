@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import olive from "@/assets/olive.svg";
+import Empty from "@/assets/emtyCart.jpg";
 import Product from "./Product";
+
 import { useCartStore } from "@/lib/stor";
 import Link from "next/link";
 
@@ -73,6 +75,12 @@ export default function Hero() {
         ) : (
           <div className="h-72 flex flex-col items-center justify-center">
             <h2 className="text-3xl mt-10 mb-5 font-bold">Cart is Empty</h2>
+            <Image
+            src={Empty}
+            width={500}
+            height={200}
+            alt="Picture of the author"
+          />
             <Link
               href="/"
               className="px-6 py-2 rounded-md text-white bg-[#A4CE4A]"
