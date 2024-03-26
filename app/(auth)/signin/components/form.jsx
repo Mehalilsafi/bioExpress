@@ -19,7 +19,7 @@ return (
 
         <form className="flex flex-col w-full">
 
-        <label for="input-label" className="block text-sm font-medium mb-2 dark:text-white text-[#918A8A]">Email</label>
+        <label htmlFor="input-label" className="block text-sm font-medium mb-2 dark:text-white text-[#918A8A]">Email</label>
 
         <input
         type="email"
@@ -27,7 +27,7 @@ return (
         placeholder="Enter your email here"/>
 
 
-        <label for="input-label" className="block text-sm font-medium mb-2 mt-5 dark:text-white text-[#918A8A]">Password</label>
+        <label htmlFor="input-label" className="block text-sm font-medium mb-2 mt-5 dark:text-white text-[#918A8A]">Password</label>
 
         <input
         type="password"

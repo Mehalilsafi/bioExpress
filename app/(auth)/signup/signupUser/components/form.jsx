@@ -24,14 +24,14 @@ const UserSignup = () => {
         <form className="flex flex-col w-full">
 
 
-            <label for="input-label" className="block text-sm font-medium mb-2 dark:text-white text-[#918A8A]">Username</label>
+            <label htmlFor="input-label" className="block text-sm font-medium mb-2 dark:text-white text-[#918A8A]">Username</label>
 
             <input
             type="text"
             className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
             placeholder="Enter your username here"/>   
 
-            <label for="input-label" className="block text-sm font-medium mb-2 dark:text-white mt-6 text-[#918A8A]">Email</label>
+            <label htmlFor="input-label" className="block text-sm font-medium mb-2 dark:text-white mt-6 text-[#918A8A]">Email</label>
 
             <input
             type="email"
@@ -39,7 +39,7 @@ const UserSignup = () => {
             placeholder="Enter your email here"/>
 
 
-            <label for="input-label" className="block text-sm font-medium mb-2 mt-5 dark:text-white text-[#918A8A]">Password</label>
+            <label htmlFor="input-label" className="block text-sm font-medium mb-2 mt-5 dark:text-white text-[#918A8A]">Password</label>
 
             <input
             type="password"
