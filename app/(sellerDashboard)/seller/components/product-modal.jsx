@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function NewProductModal({ onSave, productData }) {
+function NewProductModal({ onSave }) {
     const [productInfo, setProductInfo] = useState({
         name: '',
         price: '',
@@ -9,21 +9,6 @@ function NewProductModal({ onSave, productData }) {
         description: '',
         quantity: '',
     });
-
-    useEffect(() => {
-        if (productData) {
-            setProductInfo(productData);
-        } else {
-            setProductInfo({
-                name: '',
-                price: '',
-                image: '',
-                category: '',
-                description: '',
-                quantity: '',
-            });
-        }
-    }, [productData]);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -53,7 +38,7 @@ function NewProductModal({ onSave, productData }) {
             <div className='hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto'>
                 <div className='flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] p-5'>
                     <h2 className='text-lg font-semibold mb-4'>
-                        {productData ? 'Update Product' : 'Add New Product'}
+                        Add New Product
                     </h2>
                     <label className='block mb-2'>
                         Name:

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import NewProductModal from './product-modal';
 import { MdOutlineDelete, MdEdit } from 'react-icons/md';
@@ -133,10 +133,7 @@ function ProductsTable() {
                     </div>
                 </div>
             </div>
-            <NewProductModal
-                onSave={handleSaveProduct}
-                productData={selectedProduct}
-            />
+            <NewProductModal onSave={handleSaveProduct} />
         </div>
     );
 }
