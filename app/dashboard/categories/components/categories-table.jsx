@@ -1,7 +1,10 @@
 import React from 'react';
 import NewCategoryModal from './new-category-modal';
 import { MdOutlineDelete } from 'react-icons/md';
-function CategoriesTable() {
+import { getCategories } from '../actions/get-categories';
+import DeleteCategory from './delete-category';
+async function CategoriesTable() {
+    const categories = await getCategories();
     return (
         <div>
             <div class='flex flex-col '>
@@ -33,21 +36,21 @@ function CategoriesTable() {
                                     </tr>
                                 </thead>
                                 <tbody class='divide-y divide-gray-200 dark:divide-gray-700'>
-                                    <tr>
-                                        <td class='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
-                                            John Brown
-                                        </td>
+                                    {categories?.map((el) => {
+                                        return (
+                                            <tr key={el.id}>
+                                                <td class='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
+                                                    {el.categoryName}
+                                                </td>
 
-                                        <td class='px-6 py-4 whitespace-nowrap text-end text-sm font-medium'>
-                                            <button
-                                                type='button'
-                                                class='inline-flex items-center text-sm font-semibold rounded-lg border border-transparent text-red-500'
-                                            >
-                                                <MdOutlineDelete size={20} />
-                                                <span>Delete</span>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                                <td class='px-6 py-4 whitespace-nowrap text-end text-sm font-medium'>
+                                                    <DeleteCategory
+                                                        categoryId={el.id}
+                                                    />
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
                                 </tbody>
                             </table>
                         </div>

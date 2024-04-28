@@ -1,7 +1,15 @@
 import React from 'react';
 import SideBar from './components/SideBar';
+import { supabaseServerClient } from '../db/supaBaseServer';
 
-function layout({ children }) {
+async function layout({ children }) {
+    const {
+        data: { user },
+    } = await supabaseServerClient.auth.getUser();
+
+    if (!user) {
+        redirect('/signin');
+    }
     return (
         <div>
             <div className='fixed h-screen w-64'>

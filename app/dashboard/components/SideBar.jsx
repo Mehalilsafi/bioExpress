@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
 import { IoPersonCircleOutline } from 'react-icons/io5';
 import { RiProductHuntLine } from 'react-icons/ri';
 import { AiOutlineNotification } from 'react-icons/ai';
@@ -9,7 +9,10 @@ import Image from 'next/image';
 import Logo from '@/assets/logo.svg';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { MdOutlineCategory } from 'react-icons/md';
+import { MdOutlineDeliveryDining } from 'react-icons/md';
 import { RiLogoutBoxLine } from 'react-icons/ri';
+import { supabase } from '@/app/db/supabase';
+import logout from '@/app/(auth)/actions/logout';
 
 const SideBar = () => {
     const pathname = usePathname();
@@ -48,6 +51,14 @@ const SideBar = () => {
                             isActive={pathname === '/dashboard/sellers'}
                         />
                         <NavItem
+                            href='/dashboard/delivery'
+                            icon={
+                                <MdOutlineDeliveryDining className='w-5 h-5' />
+                            }
+                            text='Delivery Boys'
+                            isActive={pathname === '/dashboard/delivery'}
+                        />
+                        <NavItem
                             href='/dashboard/products'
                             icon={<RiProductHuntLine className='w-5 h-5' />}
                             text='Products'
@@ -64,6 +75,9 @@ const SideBar = () => {
                         <button
                             type='button'
                             class='py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 text-red-500 hover:border-red-400 hover:text-red-400 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 w-[95%] '
+                            onClick={async () => {
+                                await logout();
+                            }}
                         >
                             <div className='w-full flex justify-center gap-1 items-center'>
                                 <RiLogoutBoxLine size={20} />

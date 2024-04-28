@@ -1,23 +1,11 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import NewSellerModal from './seller-modal';
-import { MdOutlineDelete, MdEdit } from 'react-icons/md';
-import { getSellers } from '../actions/get-seller';
-import { activateDeactivateSeller } from '../actions/activate-deactivate-seller';
+import React from 'react';
 
-function SellersTable({ sellers }) {
-    const openModalForEditSeller = (seller) => {
-        setSelectedSeller(seller);
-    };
+import { activateDeactivateDelivery } from '../actions/activate-deactivate-delivery';
 
-    const handleSaveSeller = (sellerData) => {
-        // Logic to save seller data
-        console.log('Saved Seller Data:', sellerData);
-        setSelectedSeller(null);
-    };
-
-    const handleActivateDeactivate = async (seller) => {
-        await activateDeactivateSeller(seller);
+function DeliveryTable({ deliveries }) {
+    const handleActivateDeactivate = async (delivery) => {
+        await activateDeactivateDelivery(delivery);
     };
 
     return (
@@ -33,7 +21,7 @@ function SellersTable({ sellers }) {
                                             scope='col'
                                             className='px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase'
                                         >
-                                            Seller Name
+                                            Full Name
                                         </th>
 
                                         <th
@@ -46,7 +34,7 @@ function SellersTable({ sellers }) {
                                             scope='col'
                                             className='px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase'
                                         >
-                                            Brand Name
+                                            Situation
                                         </th>
                                         <th
                                             scope='col'
@@ -54,23 +42,32 @@ function SellersTable({ sellers }) {
                                         >
                                             Location
                                         </th>
+                                        <th
+                                            scope='col'
+                                            className='px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase'
+                                        >
+                                            vehicle
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody className='divide-y divide-gray-200 dark:divide-gray-700'>
-                                    {sellers?.map((seller) => (
-                                        <tr key={seller.id}>
+                                    {deliveries?.map((delivery) => (
+                                        <tr key={delivery.id}>
                                             <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
-                                                {seller.fullName}
+                                                {delivery.fullName}
                                             </td>
 
                                             <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
-                                                {seller.phoneNumber}
+                                                {delivery.phoneNumber}
                                             </td>
                                             <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
-                                                {seller.brandName}
+                                                {delivery.situation}
                                             </td>
                                             <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
-                                                {seller.address}
+                                                {delivery.adress}
+                                            </td>
+                                            <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
+                                                {delivery.vehicleOwnership}
                                             </td>
                                             <td className='px-6 py-4 whitespace-nowrap text-end text-sm font-medium'>
                                                 <button
@@ -78,19 +75,19 @@ function SellersTable({ sellers }) {
                                                     className='inline-flex items-center text-sm font-semibold rounded-lg border border-transparent '
                                                     onClick={() => {
                                                         handleActivateDeactivate(
-                                                            seller
+                                                            delivery
                                                         );
                                                     }}
                                                     style={{
-                                                        color: seller.isActive
+                                                        color: delivery.isActive
                                                             ? 'red'
                                                             : 'green',
                                                     }}
                                                 >
                                                     <span>
-                                                        {seller.isActive
-                                                            ? 'Deactivate seller'
-                                                            : 'Activate Seller'}
+                                                        {delivery.isActive
+                                                            ? 'Deactivate delivery'
+                                                            : 'Activate delivery'}
                                                     </span>
                                                 </button>
                                             </td>
@@ -106,4 +103,4 @@ function SellersTable({ sellers }) {
     );
 }
 
-export default SellersTable;
+export default DeliveryTable;

@@ -1,10 +1,23 @@
+export const revalidate = 0;
+
 import React from 'react';
 
 import UserCard from './components/user-card';
 import Cards from './components/stats-card';
 import ProductsTable from './components/products-table';
+import { supabaseServerClient } from '@/app/db/supaBaseServer';
+import { redirect } from 'next/navigation';
 
-function page() {
+
+export default async function page() {
+    const {
+        data: { user },
+    } = await supabaseServerClient.auth.getUser();
+
+    if (!user) {
+        redirect('/signin');
+    }
+
     return (
         <div>
             {/* <Navbar /> */}
@@ -24,5 +37,3 @@ function page() {
         </div>
     );
 }
-
-export default page;

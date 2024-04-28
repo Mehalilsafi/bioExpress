@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { addCategory } from '../actions/add-categoies';
 
 function NewCategoryModal() {
     const [categoryName, setCategoryName] = useState('');
@@ -9,10 +10,8 @@ function NewCategoryModal() {
         setCategoryName(event.target.value);
     };
 
-    const handleSaveChanges = () => {
-        // Add logic to save category changes
-        console.log('Category Name:', categoryName);
-        // Reset the input field
+    const handleSaveChanges = async () => {
+        await addCategory(categoryName);
         setCategoryName('');
     };
 

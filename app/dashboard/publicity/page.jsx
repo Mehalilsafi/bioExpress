@@ -1,45 +1,81 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import uploadImage from '@/app/hooks/use-upload-image';
+import { getPublicities } from './actions/get-pub';
+import { addPublicity } from './actions/add-pub';
 
 function PublicityPage() {
-    const [images, setImages] = useState({
-        image1: null,
-        image2: null,
-        image3: null,
-    });
+    const [pubs, setPubs] = useState([]);
 
-    const handleImageChange = (event, imageName) => {
+    useEffect(() => {
+        (async () => {
+            const data = await getPublicities();
+            console.log('====================================');
+            console.log(data);
+            console.log('====================================');
+            setPubs(data);
+        })();
+    }, []);
+
+    const handleImageChange = async (event, imageName) => {
         const file = event.target.files[0];
         if (file) {
-            setImages({
-                ...images,
-                [imageName]: URL.createObjectURL(file),
+            const renamedFile = new File([file], imageName, {
+                type: file.type,
             });
+            // setImages({
+            //     ...images,
+            //     [imageName]: URL.createObjectURL(renamedFile),
+            // });
+            const res = await uploadImage(renamedFile);
+
+            const data = {
+                imageUrl: `https://xjjgfrumxwkrggavbrbc.supabase.co/storage/v1/object/public/productImages/${res.path}`,
+                page: imageName,
+            };
+            await addPublicity(data);
         }
     };
 
     return (
         <div className=''>
             <h1 class='text-3xl font-bold mb-5'>Publicities</h1>
+
             <div className='w-full  grid grid-cols-3 gap-8'>
                 <Column
                     title='side bar publicity'
-                    imageName='image1'
-                    image={images.image1}
+                    imageName='side_bar_publicity'
+                    image={
+                        pubs?.length &&
+                        (pubs?.filter(
+                            (el) => el.page === 'side_bar_publicity'
+                        ))[0].imageUrl
+                    }
                     onChange={handleImageChange}
                 />
                 <Column
                     title='details page publicity'
-                    imageName='image2'
-                    image={images.image2}
+                    imageName='details_page_publicity'
+                    image={
+                        pubs?.length &&
+                        (pubs?.filter(
+                            (el) => el.page === 'details_page_publicity'
+                        ))[0].imageUrl
+                    }
                     onChange={handleImageChange}
                 />
+
                 <Column
                     title='products page publicity'
-                    imageName='image3'
-                    image={images.image3}
+                    imageName='products_page_publicity'
+                    image={
+                        pubs?.length &&
+                        (pubs?.filter(
+                            (el) => el.page === 'products_page_publicity'
+                        ))[0].imageUrl
+                    }
                     onChange={handleImageChange}
                 />
             </div>
