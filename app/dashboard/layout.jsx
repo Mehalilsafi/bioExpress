@@ -1,6 +1,7 @@
 import React from 'react';
 import SideBar from './components/SideBar';
 import { supabaseServerClient } from '../db/supaBaseServer';
+import { redirect } from 'next/navigation';
 
 async function layout({ children }) {
     const {
