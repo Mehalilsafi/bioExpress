@@ -20,9 +20,13 @@ import getProduct from "@/lib/getProduct"; // Function for retrieving product da
 import gridImage from "@/assets/gridImage.svg"; // SVG asset for grid images
 import olive from "@/assets/olive.svg"; // SVG asset for olives
 import {useCartStore} from "@/lib/stor";
-export default function Hero() {
-  const productData = getProduct();
- 
+import ProductAction from "../actions/getProduct";
+export default async function Hero() {
+  //const productData = getProduct();
+  
+    const productData = await ProductAction();
+   // console.log("product action from server action function:", productAction);
+  
 
   return (
     <div className=" rounded-md m-4">
@@ -42,11 +46,11 @@ export default function Hero() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-9/12 mt-7">
           {productData.map((product) => (
             <Product
-              key={product.productId}
-              productId={product.productId}
+              key={product.id}
+              productId={product.id}
               productName={product.productName}
               productPrice={product.productPrice}
-              productUrl={product.url}
+              //productUrl={product.url}
             />
           ))}
         </div>
