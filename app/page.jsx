@@ -5,7 +5,7 @@ import Nav from "./components/Nav";
 import getPublicity from "./actions/getPublicity";
 export default async function Home() {
   const publicity = await getPublicity();
-  console.log('this is publicity come from supabase ',publicity)
+   console.log('this is publicity come from supabase ',publicity)
   return (
     <>
     

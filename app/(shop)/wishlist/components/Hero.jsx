@@ -10,7 +10,7 @@ import Product from "./Product";
 import { useCartStore } from "@/lib/stor";
 import Link from "next/link";
 
-export default function Hero() {
+export default function Hero({ publicity }) {
   const cartItems = useCartStore((state) => state.cartItems);
   const [selectedProducts, setSelectedProducts] = useState([]);
 
@@ -29,6 +29,12 @@ export default function Hero() {
       setSelectedProducts([...selectedProducts, productId]);
     }
   };
+
+  const currentPage = "details_page_publicity";
+  const filteredPublicity = publicity?.filter(
+    (item) => item.page == currentPage
+  );
+  console.log("filterd page depend on the page Name", filteredPublicity);
 
   return (
     <div className="m-4">
@@ -76,11 +82,11 @@ export default function Hero() {
           <div className="h-72 flex flex-col items-center justify-center">
             <h2 className="text-3xl mt-10 mb-5 font-bold">Cart is Empty</h2>
             <Image
-            src={Empty}
-            width={500}
-            height={200}
-            alt="Picture of the author"
-          />
+              src={Empty}
+              width={500}
+              height={200}
+              alt="Picture of the author"
+            />
             <Link
               href="/"
               className="px-6 py-2 rounded-md text-white bg-[#A4CE4A]"
@@ -90,14 +96,16 @@ export default function Hero() {
           </div>
         )}
 
-        <div>
-          <Image
-            src={olive}
-            width={500}
-            height={500}
-            alt="Picture of the author"
-          />
-        </div>
+        {filteredPublicity?.length > 0 && (
+          <div>
+            <Image
+              src={filteredPublicity[0]?.imageUrl}
+              width={200}
+              height={400}
+              alt="side_bar_publicity"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

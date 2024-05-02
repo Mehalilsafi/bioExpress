@@ -4,8 +4,13 @@ import orange from "@/assets/orange.svg";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-export default function Footer() {
+export default function Footer({publicity}) {
   const arr = [1, 2, 3];
+  const currentPage = "details_page_publicity";
+  const filteredPublicity = publicity?.filter(
+    (item) => item.page == currentPage
+  );
+  console.log("filterd page depend on the page Name", filteredPublicity);
   return (
     <div className="mt-5">
       <h1 className="font-medium text-3xl">Seggestions</h1>
@@ -22,12 +27,14 @@ export default function Footer() {
           ))}
         </div>
 
-        <Image
-          src={orange}
-          width={400}
-          height={150}
-          alt="Picture of the author"
-        />
+        {filteredPublicity?.length > 0 && (
+          <Image
+            src={filteredPublicity[0]?.imageUrl}
+            width={200}
+            height={400}
+            alt="side_bar_publicity"
+          />
+        )}
       </div>
       <h1 className="font-medium text-3xl mt-5">Comments</h1>
       <div className="flex justify-between items-center gap-[15px] mt-5">
