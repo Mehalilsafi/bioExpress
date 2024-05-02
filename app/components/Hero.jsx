@@ -1,4 +1,3 @@
-
 import React from "react"; // React components
 
 // Custom components
@@ -13,20 +12,13 @@ import Image from "next/image"; // Next.js component for optimized images
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Font Awesome icon component
 import {} from "@fortawesome/free-solid-svg-icons"; // Specific Font Awesome icons
 
-// Functions
-import getProduct from "@/lib/getProduct"; // Function for retrieving product data
-
 // SVG assets
 import gridImage from "@/assets/gridImage.svg"; // SVG asset for grid images
 import olive from "@/assets/olive.svg"; // SVG asset for olives
-import {useCartStore} from "@/lib/stor";
+import { useCartStore } from "@/lib/stor";
 import ProductAction from "../actions/getProduct";
 export default async function Hero() {
-  //const productData = getProduct();
-  
-    const productData = await ProductAction();
-   // console.log("product action from server action function:", productAction);
-  
+  const productData = await ProductAction();
 
   return (
     <div className=" rounded-md m-4">
@@ -50,7 +42,7 @@ export default async function Hero() {
               productId={product.id}
               productName={product.productName}
               productPrice={product.productPrice}
-              //productUrl={product.url}
+              productImages={product.images}
             />
           ))}
         </div>

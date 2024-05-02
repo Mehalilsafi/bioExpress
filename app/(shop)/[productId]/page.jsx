@@ -1,7 +1,11 @@
+
 import React from "react";
 import SideBar from "@/app/components/SideBar";
+import { useParams } from "next/navigation";
 import Hero from "./components/Hero";
+
 export default function page({ params }) {
+ 
   return (
     <div className="grid grid-cols-5  mx-auto px-4 mt-5 ">
       <div className=" col-span-5  md:col-span-1  " style={{ minWidth: "30%" }}>
@@ -12,6 +16,7 @@ export default function page({ params }) {
         style={{ minWidth: "70%" }}
       >
         <Hero params={params} />
+
       </div>
     </div>
   );

@@ -11,15 +11,16 @@ import { useCartStore } from "@/lib/stor";
 
 export default function Product({
   productId,
-  productUrl,
+  productImages,
   productName,
   productPrice,
 }) {
+  const firstImageUrl = productImages && productImages.length > 0 ? productImages[0] : null;
   const cartItems = useCartStore((state) => state.cartItems);
   const { addItemToCart } = useCartStore();
   const product = {
     productId: productId,
-    productUrl: productUrl,
+    productUrl: firstImageUrl,
     productName: productName,
     productPrice: productPrice,
   };
@@ -42,6 +43,7 @@ export default function Product({
   function handlClick() {
     router.push(`/${productId}`);
   }
+ 
   return (
     <div className="relative group">
       <div className="relative">
@@ -50,9 +52,10 @@ export default function Product({
           href="#"
         >
           <div className="relative pt-[50%] sm:pt-[60%] lg:pt-[80%] rounded-t-xl overflow-hidden">
+         
             <Image
               className="size-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-t-xl"
-              src={productUrl}
+              src={firstImageUrl}
               width={200}
               height={200}
               alt="Image Description"
