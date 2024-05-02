@@ -17,9 +17,12 @@ import gridImage from "@/assets/gridImage.svg"; // SVG asset for grid images
 import olive from "@/assets/olive.svg"; // SVG asset for olives
 import { useCartStore } from "@/lib/stor";
 import ProductAction from "../actions/getProduct";
-export default async function Hero() {
+import getPublicity from "../actions/getPublicity";
+export default async function Hero({publicity}) {
   const productData = await ProductAction();
-
+  const currentPage = 'products_page_publicity';
+  const filteredPublicity = publicity.filter((item) => item.page == currentPage);
+  console.log("filterd page depend on the page Name",filteredPublicity)
   return (
     <div className=" rounded-md m-4">
       <div className="w-full flex justify-start gap-[35px] h-[30px] mb-1.5 border-b border-gray-200 border-solid">
@@ -47,15 +50,18 @@ export default async function Hero() {
           ))}
         </div>
 
-        <div className="h-full">
-          <Image
-            className="mt-7"
-            src={olive}
-            width={200}
-            height={400}
-            alt="Image Description"
-          />
-        </div>
+        {filteredPublicity.length > 0 && (
+          <div className="h-full">
+            {/* Access imageUrl from the first item in filteredPublicity */}
+            <Image
+              className="mt-7"
+              src={filteredPublicity[0].imageUrl} // Access imageUrl from the first item in filteredPublicity
+              width={200}
+              height={400}
+              alt="product_page_publicity"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

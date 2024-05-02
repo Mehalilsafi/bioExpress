@@ -12,7 +12,7 @@ import {
   faTable,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function SideBar() {
+export default function SideBar({ publicity }) {
   const items = [
     { icon: faPizzaSlice, text: "Food" },
     { icon: faShirt, text: "Cloth" },
@@ -23,20 +23,23 @@ export default function SideBar() {
     { icon: faGlobe, text: "Our scial " },
     { icon: faComment, text: "About Us" },
   ];
+
+  const currentPage = "side_bar_publicity";
+  const filteredPublicity = publicity?.filter(
+    (item) => item.page == currentPage
+  );
+  console.log("filterd page depend on the page Name", filteredPublicity);
+
   return (
     <div className=" p-3 ">
-   
-
       <button
         type="button"
         className="text-gray-500 hover:text-gray-600 mt-16"
         data-hs-overlay="#docs-sidebar"
         aria-controls="docs-sidebar"
         aria-label="Toggle navigation"
-        >
-        
+      >
         <span className="sr-only">Toggle Navigation</span>
-       
 
         <svg
           className="flex-shrink-0 size-6 md:hidden"
@@ -48,10 +51,8 @@ export default function SideBar() {
           <path
             fill-rule="evenodd"
             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-            />
+          />
         </svg>
-        
-         
       </button>
 
       <div
@@ -97,13 +98,15 @@ export default function SideBar() {
             </div>
           ))}
         </div>
-        <Image
-          src={sidBarImage}
-          width={300}
-          height={300}
-          alt="Picture of the author"
-          className="m-3 rounded-md pr-6"
-        />
+
+        {filteredPublicity?.length > 0 && (
+          <Image
+            src={filteredPublicity[0]?.imageUrl}
+            width={200}
+            height={400}
+            alt="side_bar_publicity"
+          />
+        )}
       </div>
     </div>
   );
