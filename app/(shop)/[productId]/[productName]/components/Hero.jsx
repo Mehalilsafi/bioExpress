@@ -5,8 +5,8 @@ import Form from "./Form";
 import getProductName from "@/lib/getProductName";
 import Price from "./Price";
 
-export default function Hero() {
-  const params = useParams();
+export default function Hero({params}) {
+  const {productName} = params
   const product = getProductName(params.productName);
   console.log("params from order page " + product);
   return (
