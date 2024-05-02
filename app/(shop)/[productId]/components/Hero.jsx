@@ -15,27 +15,11 @@ export default async function Hero({ params }) {
   console.log("********************************** ");
   console.log("product with id from supabase ", product);
   console.log("********************************** ");
-  const gallery = [
-    {
-      id: 1,
-      url: realeted,
-    },
-    {
-      id: 2,
-      url: realeted,
-    },
-    {
-      id: 3,
-      url: realeted,
-    },
-    {
-      id: 4,
-      url: realeted,
-    },
-  ];
+  const gallery = product.images;
+  
 
   return (
-    <div className="m-6">
+     <div className="m-6">
       <div className="md:flex md:gap-8">
         <div className="flex flex-col md:flex-row gap-[20px] md:col-span-2 md:w-6/12">
           <CarouselThumbs gallery={gallery} />
