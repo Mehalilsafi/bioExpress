@@ -29,7 +29,7 @@ export default function Product({ Products, selectedProducts, onSelect }) {
             onChange={() => onSelect(product.productId)}
           />
           <Image
-            src={product.url}
+            src={product.productUrl}
             width={100}
             height={100}
             alt="Picture of the author"
