@@ -64,12 +64,12 @@ export default function Hero({ publicity }) {
             All items
           </label>
         </div>
-        <button
-          type="button"
+        <Link
+         href='/order'
           className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-[#A4CE4A] hover:border-[#eaffe9]  disabled:opacity-50 disabled:pointer-events-none dark:border-white dark:text-white dark:hover:text-gray-300 dark:hover:border-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 bg-[#A4CE4A] "
         >
           order now
-        </button>
+        </Link>
       </div>
       <div className=" flex flex-col md:flex-row gap-5 mt-5">
         {cartItems && cartItems.length > 0 ? (

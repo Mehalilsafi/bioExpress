@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 export default function Price({ product }) {
-  const productImages=product.images
-  const firstImageUrl = productImages && productImages.length > 0 ? productImages[0] : null;
+  const productImages=product?.images
+  const firstImageUrl = productImages && productImages?.length > 0 ? productImages[0] : null;
   return (
     <div className="border-l-[1px] border-inherit border-solid h-full ">
       <div className="flex flex-col md:flex-row justify-between m-4 w-full ">
@@ -10,7 +10,7 @@ export default function Price({ product }) {
           <Image
             width={100}
             height={100}
-            src={firstImageUrl}
+            src={product}
             alt="product image"
           />
           <p>{product?.productName}</p>

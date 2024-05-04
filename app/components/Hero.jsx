@@ -46,6 +46,7 @@ export default async function Hero({publicity}) {
               productName={product.productName}
               productPrice={product.productPrice}
               productImages={product.images}
+              ProductDescription={product.description}
             />
           ))}
         </div>

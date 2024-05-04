@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import Image from "next/image";
 import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +7,7 @@ import Counter from "./Counter";
 import { useCartStore } from "@/lib/stor";
 
 export default function Product({ Products, selectedProducts, onSelect }) {
+  console.log("product from home page ",Products)
   const { deleteItemFromCart } = useCartStore();
 
   function handleDelete(productId) {
@@ -35,8 +37,7 @@ export default function Product({ Products, selectedProducts, onSelect }) {
           <div className="flex flex-col justify-center items-start">
             <h1 className="font-bold text-2xl">{product.productName}</h1>
             <p className="max-w-lg text-center">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Necessitatibus officiis adipisci nostrum
+          {product?.description}
             </p>
           </div>
           <div className="flex items-end gap-[10px]">

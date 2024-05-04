@@ -14,6 +14,7 @@ export default function Product({
   productImages,
   productName,
   productPrice,
+  ProductDescription,
 }) {
   const firstImageUrl = productImages && productImages.length > 0 ? productImages[0] : null;
   const cartItems = useCartStore((state) => state.cartItems);
@@ -23,6 +24,7 @@ export default function Product({
     productUrl: firstImageUrl,
     productName: productName,
     productPrice: productPrice,
+    description:ProductDescription,
   };
 
   function handleCart() {
