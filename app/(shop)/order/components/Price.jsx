@@ -2,11 +2,11 @@
 import React from "react";
 import Image from "next/image";
 import { useCartStore } from "@/lib/stor";
-export default function Price({ product }) {
-  const productImages = product?.images;
-  const firstImageUrl =
-    productImages && productImages?.length > 0 ? productImages[0] : null;
+export default function Price() {
+  
+  
   const cartItems = useCartStore((state) => state.cartItems);
+  console.log("cart itmes for rder page",cartItems)
   return (
     <div className="border-l-[1px] border-inherit border-solid h-full ">
 
