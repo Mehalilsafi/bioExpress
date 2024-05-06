@@ -1,7 +1,7 @@
 import React from "react"; // React components
 
 // Custom components
-import Dropdown from "./Dropdown"; // Custom component for dropdown functionality
+
 import Product from "./Product"; // Custom component for displaying products
 
 // Next.js components
@@ -26,16 +26,12 @@ export default async function Hero({publicity}) {
   console.log("filterd page depend on the page Name",filteredPublicity)
   return (
     <div className=" rounded-md m-4">
-      <div className="w-full flex justify-start gap-[35px] h-[30px] mb-1.5 border-b border-gray-200 border-solid">
-        <p className="text-sm text-[#918B8B]">Healthy food</p>
-        <p className="text-sm text-[#918B8B]">Organic food</p>
-        <p className="text-sm text-[#918B8B]">Jam</p>
-      </div>
+    
       <div className="flex flex-row justify-between items-center  my-5">
         <h1 className="text-xl sm:text-2xl font-medium mb-2 sm:mb-0 p-3 md:p-0">
           Showing Results for <span className="text-[#A4CE4A]">Food</span>
         </h1>
-        <Dropdown />
+      
       </div>
 
       <div className="flex justify-center items-center md:items-stretch flex-col  lg:flex-row lg:justify-between lg:gap-4 w-full ">
