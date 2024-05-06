@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function SideBar({ publicity, categories}) {
-  const items = categories.map((category, index) => ({
+  const items = categories?.map((category, index) => ({
     icon: index === 0 ? faJar : faMartiniGlassCitrus,
     Name: category.categoryName,
   }));

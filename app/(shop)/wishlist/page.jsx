@@ -2,9 +2,11 @@ import React from 'react'
 import SideBar from '@/app/components/SideBar';
 import Hero from "./components/Hero";
 import getPublicity from '@/app/actions/getPublicity';
+
+import getCategories from '@/app/actions/getCategories';
 export const revalidate=0
 export default async function page() {
-
+  const categories=await getCategories()
   const publicity = await getPublicity();
   console.log('this is publicity come from supabase ',publicity)
   return (
@@ -13,7 +15,7 @@ export default async function page() {
       className=" col-span-5  md:col-span-1  "
       style={{ minWidth: "30%" }}
     >
-      <SideBar publicity={publicity}/>
+      <SideBar publicity={publicity} categories={categories}/>
     </div>
     <div
       className=" col-span-5 md:col-span-4 bg-[#EBF1E1] rounded-md border border-gray-200 border-solid mt-[70px]"
