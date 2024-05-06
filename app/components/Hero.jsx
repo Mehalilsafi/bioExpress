@@ -19,6 +19,7 @@ import { useCartStore } from "@/lib/stor";
 import ProductAction from "../actions/getProduct";
 import getPublicity from "../actions/getPublicity";
 export default async function Hero({publicity}) {
+ 
   const productData = await ProductAction();
   const currentPage = 'products_page_publicity';
   const filteredPublicity = publicity.filter((item) => item.page == currentPage);

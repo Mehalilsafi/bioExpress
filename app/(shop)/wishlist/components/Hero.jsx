@@ -30,7 +30,7 @@ export default function Hero({ publicity }) {
     }
   };
 
-  const currentPage = "details_page_publicity";
+  const currentPage = "products_page_publicity";
   const filteredPublicity = publicity?.filter(
     (item) => item.page == currentPage
   );

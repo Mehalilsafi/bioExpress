@@ -4,6 +4,7 @@ import SideBar from "@/app/components/SideBar";
 import { useParams } from "next/navigation";
 import Hero from "./components/Hero";
 import getPublicity from "@/app/actions/getPublicity";
+export const revalidate=0
 export default async function page({ params }) {
   const publicity = await getPublicity();
   console.log('this is publicity come from supabase ',publicity)

@@ -3,6 +3,7 @@ import SideBar from "./components/SideBar";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
 import getPublicity from "./actions/getPublicity";
+export const revalidate=0
 export default async function Home() {
   const publicity = await getPublicity();
    console.log('this is publicity come from supabase ',publicity)
