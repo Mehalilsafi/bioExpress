@@ -10,15 +10,15 @@ import {
   faGlobe,
   faComment,
   faTable,
+  faMartiniGlassCitrus,
+   faJar,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function SideBar({ publicity }) {
-  const items = [
-    { icon: faPizzaSlice, text: "Food" },
-    { icon: faShirt, text: "Cloth" },
-    { icon: faBagShopping, text: "Accecsoire" },
-    { icon: faWandMagicSparkles, text: "Decoration" },
-  ];
+export default function SideBar({ publicity, categories}) {
+  const items = categories.map((category, index) => ({
+    icon: index === 0 ? faJar : faMartiniGlassCitrus,
+    Name: category.categoryName,
+  }));
   const itemsButtom = [
     { icon: faGlobe, text: "Our scial " },
     { icon: faComment, text: "About Us" },
@@ -79,7 +79,7 @@ export default function SideBar({ publicity }) {
                 icon={item.icon}
                 className="text-xl font-light"
               />
-              <p>{item.text}</p>
+              <p>{item.Name}</p>
             </div>
           ))}
         </div>
