@@ -6,9 +6,9 @@ export default function Form() {
   const cartItems = useCartStore((state) => state.cartItems);
   return (
     <div>
-      <div className="flex flex-col gap-5 ">
+       <div className="flex flex-col gap-5 ">
         <h1>Delivery</h1>
-        <form action={order}>
+        <form action={order} className="flex flex-col gap-5">
           <div className="grid grid-cols-4  gap-5 w-full">
             <div className=" space-y-3 col-span-2">
               <input
