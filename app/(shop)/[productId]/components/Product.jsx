@@ -16,7 +16,7 @@ export default function Product({product}) {
  
   const router=useRouter()
   function handlRout(){
-    router.push(`/${product.id}/${product.productName}`)
+     router.push(`/${product.id}/${product.productName}`)
   }
   const counter = useStore((state) => state.counter);
   const totalPrice = counter * product.productPrice;

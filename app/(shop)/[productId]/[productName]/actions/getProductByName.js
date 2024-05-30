@@ -10,6 +10,7 @@ export default async function getProductByName(productName) {
 
   if (error) {
     console.error('Error fetching product:', error);
+    console.error(error);
     return null;
   }
 
