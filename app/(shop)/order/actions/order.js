@@ -8,11 +8,9 @@ export default async function order(formData) {
   const city = formData.get("ville");
   const postalCode = formData.get("codePostal");
   const phoneNumber = formData.get("phoneNumber");
-  const productsArray = formData
+  const cartItmes = formData
     .get("productes")
-    .split(",")
-    .map((item) => JSON.parse(item));
-  const cart = JSON.stringify(productsArray);
+   
 
   try {
     const { data, error } = await supabase
@@ -25,7 +23,7 @@ export default async function order(formData) {
           ville: city,
           codePostal: postalCode,
           phoneNumber: phoneNumber,
-          productes: cart,
+          productes: cartItmes,
         },
       ])
       .select();
