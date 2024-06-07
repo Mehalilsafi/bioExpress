@@ -65,6 +65,12 @@ const SideBar = () => {
                             isActive={pathname === '/dashboard/products'}
                         />
                         <NavItem
+                            href='/dashboard/orders'
+                            icon={<RiProductHuntLine className='w-5 h-5' />}
+                            text='Orders'
+                            isActive={pathname === '/dashboard/orders'}
+                        />
+                        <NavItem
                             href='/dashboard/publicity'
                             icon={<AiOutlineNotification className='w-5 h-5' />}
                             text='Publicity'

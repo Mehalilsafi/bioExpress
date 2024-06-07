@@ -23,7 +23,7 @@ async function page() {
                 </div>
                 <div className='flex-1 pl-[20%]'>
                     <div className='p-5'>
-                        <Cards />
+                        <p className='text-2xl font-bold'>Products</p>
                         <div className='mt-5'>
                             <ProductsTable />
                         </div>

@@ -1,22 +1,11 @@
-export const revalidate = 0;
-
 import React from 'react';
+import OrdersTable from './components/orders-table';
+import { getOrders } from './actions/get-orders';
 
 import UserCard from './components/user-card';
-import Cards from './components/stats-card';
-import ProductsTable from './components/products-table';
-import { supabaseServerClient } from '@/app/db/supaBaseServer';
-import { redirect } from 'next/navigation';
 
-
-export default async function page() {
-    const {
-        data: { user },
-    } = await supabaseServerClient.auth.getUser();
-
-    if (!user) {
-        redirect('/signin');
-    }
+async function page() {
+    const orders = await getOrders();
 
     return (
         <div>
@@ -27,9 +16,9 @@ export default async function page() {
                 </div>
                 <div className='flex-1 pl-[20%]'>
                     <div className='p-5'>
-                        <Cards />
+                        <p className='text-2xl font-bold'>Delivery Orders</p>
                         <div className='mt-5'>
-                            <ProductsTable />
+                            <OrdersTable orders={orders} />
                         </div>
                     </div>
                 </div>
@@ -37,3 +26,5 @@ export default async function page() {
         </div>
     );
 }
+
+export default page;

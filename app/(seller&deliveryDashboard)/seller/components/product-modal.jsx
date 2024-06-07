@@ -1,14 +1,28 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 
-function NewProductModal({ onSave }) {
+import uploadImage from '@/app/hooks/use-upload-image';
+import { addProduct } from '../actions/add-product';
+import { getCategories } from '@/app/dashboard/categories/actions/get-categories';
+
+function NewProductModal() {
     const [productInfo, setProductInfo] = useState({
-        name: '',
-        price: '',
-        image: '',
+        productName: '',
+        productPrice: '',
+        images: [],
         category: '',
         description: '',
         quantity: '',
     });
+
+    const [categories, setCategories] = useState();
+
+    useEffect(() => {
+        (async () => {
+            const data = await getCategories();
+            setCategories(data);
+        })();
+    }, []);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -18,12 +32,42 @@ function NewProductModal({ onSave }) {
         });
     };
 
-    const handleSaveChanges = () => {
-        onSave(productInfo);
+    const handleImageDrop = (e) => {
+        e.preventDefault();
+        const files = Array.from(e.dataTransfer.files);
         setProductInfo({
-            name: '',
-            price: '',
-            image: '',
+            ...productInfo,
+            images: [...productInfo.images, ...files],
+        });
+    };
+
+    const handleImageRemove = (index) => {
+        const updatedImages = [...productInfo.images];
+        updatedImages.splice(index, 1);
+        setProductInfo({
+            ...productInfo,
+            images: updatedImages,
+        });
+    };
+
+    const handleSaveChanges = async () => {
+        if (productInfo?.images && productInfo.images.length > 0) {
+            const updatedImages = await Promise.all(
+                productInfo.images.map(async (el) => {
+                    const res = await uploadImage(el);
+                    return `https://xjjgfrumxwkrggavbrbc.supabase.co/storage/v1/object/public/productImages/${res.path}`;
+                })
+            );
+
+            productInfo.images = updatedImages;
+        }
+
+        await addProduct(productInfo);
+
+        setProductInfo({
+            productName: '',
+            productPrice: '',
+            images: [],
             category: '',
             description: '',
             quantity: '',
@@ -32,7 +76,7 @@ function NewProductModal({ onSave }) {
 
     return (
         <div
-            class='hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none'
+            className='hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none'
             id='hs-product-modal'
         >
             <div className='hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto'>
@@ -44,8 +88,8 @@ function NewProductModal({ onSave }) {
                         Name:
                         <input
                             type='text'
-                            name='name'
-                            value={productInfo.name}
+                            name='productName'
+                            value={productInfo.productName}
                             onChange={handleInputChange}
                             className='border-gray-300 border rounded-md p-1 w-full'
                         />
@@ -54,33 +98,82 @@ function NewProductModal({ onSave }) {
                         Price:
                         <input
                             type='text'
-                            name='price'
-                            value={productInfo.price}
+                            name='productPrice'
+                            value={productInfo.productPrice}
                             onChange={handleInputChange}
                             className='border-gray-300 border rounded-md p-1 w-full'
                         />
                     </label>
 
                     <label className='block mb-2'>
-                        Image:
-                        <input
-                            type='file'
-                            accept='image/*'
-                            name='image'
-                            onChange={handleInputChange}
-                            className='border-gray-300 border rounded-md p-1 w-full'
-                        />
+                        Images:
+                        <div
+                            onDrop={handleImageDrop}
+                            onDragOver={(e) => e.preventDefault()}
+                            className='border-dashed border-2 border-gray-300 p-4 mb-2'
+                        >
+                            <p>Drop images here or click to upload</p>
+                            <input
+                                type='file'
+                                multiple
+                                accept='image/*'
+                                onChange={(e) => {
+                                    setProductInfo({
+                                        ...productInfo,
+                                        images: [
+                                            ...productInfo.images,
+                                            ...Array.from(e.target.files),
+                                        ],
+                                    });
+                                    e.target.value = null;
+                                }}
+                                className='hidden'
+                            />
+                            <div className='flex flex-wrap'>
+                                {productInfo.images.map((image, index) => (
+                                    <div
+                                        key={index}
+                                        className='relative m-2'
+                                    >
+                                        <img
+                                            src={URL.createObjectURL(image)}
+                                            alt={`Product Image ${index}`}
+                                            className='h-24 w-24 object-cover'
+                                        />
+                                        <button
+                                            onClick={() =>
+                                                handleImageRemove(index)
+                                            }
+                                            className='absolute top-0 right-0 bg-red-500 text-white rounded-full h-6 w-6 flex items-center justify-center text-sm'
+                                        >
+                                            X
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </label>
+
                     <label className='block mb-2'>
                         Category:
-                        <input
-                            type='text'
+                        <select
                             name='category'
                             value={productInfo.category}
                             onChange={handleInputChange}
-                            className='border-gray-300 border rounded-md p-1 w-full'
-                        />
+                            class='py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none '
+                        >
+                            <option value=''>Select a category</option>
+                            {categories?.map((category) => (
+                                <option
+                                    key={category.id}
+                                    value={category.id}
+                                >
+                                    {category.categoryName}
+                                </option>
+                            ))}
+                        </select>
                     </label>
+
                     <label className='block mb-2'>
                         Description:
                         <textarea
