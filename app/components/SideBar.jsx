@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import sidBarImage from "@/assets/sidebare.svg";
@@ -11,10 +12,11 @@ import {
   faComment,
   faTable,
   faMartiniGlassCitrus,
-   faJar,
+  faJar,
 } from "@fortawesome/free-solid-svg-icons";
+import { useCategory } from "@/lib/stor";
 
-export default function SideBar({ publicity, categories}) {
+export default function SideBar({ publicity, categories }) {
   const items = categories?.map((category, index) => ({
     icon: index === 0 ? faJar : faMartiniGlassCitrus,
     Name: category.categoryName,
@@ -23,6 +25,10 @@ export default function SideBar({ publicity, categories}) {
     { icon: faGlobe, text: "Our scial " },
     { icon: faComment, text: "About Us" },
   ];
+  const useGetCategories = useCategory((state) => state.categoryName);
+  //   function andleFilter(category) {
+  // useGetCategories(category); // Update the category
+  // }
 
   const currentPage = "side_bar_publicity";
   const filteredPublicity = publicity?.filter(
@@ -74,6 +80,7 @@ export default function SideBar({ publicity, categories}) {
             <div
               key={index}
               className="flex justify-start items-center p-2 gap-3"
+              //onClick={() => FilterProduct(item.name)}
             >
               <FontAwesomeIcon
                 icon={item.icon}

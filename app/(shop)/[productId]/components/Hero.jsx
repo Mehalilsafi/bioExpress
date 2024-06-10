@@ -23,7 +23,7 @@ export default async function Hero({ params }) {
         <Product product={product} />
       </div>
 
-      <Footer publicity={publicity} />
+      <Footer publicity={publicity} productId={productId} sellerId={product?.sellerId}/>
     </div>
   );
 }

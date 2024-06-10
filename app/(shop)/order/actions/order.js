@@ -8,9 +8,7 @@ export default async function order(formData) {
   const city = formData.get("ville");
   const postalCode = formData.get("codePostal");
   const phoneNumber = formData.get("phoneNumber");
-  const cartItmes = formData
-    .get("productes")
-   
+  const cartItmes = formData.get("productes");
 
   try {
     const { data, error } = await supabase
