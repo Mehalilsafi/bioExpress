@@ -1,14 +1,15 @@
 "use client";
-import React, { useState } from "react"; // React components
+import React, { useState ,useEffect,useCallback} from "react"; // React components
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-
+import { supabase } from '@/app/db/supabase';
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/lib/stor";
-
+import Rating from './Rating'; // Adjust the path as necessary
+import Star from './Star'; // Adjust the path as necessary
 
 export default function Product({
   productId,
@@ -46,7 +47,45 @@ export default function Product({
   function handlClick() {
     router.push(`/${productId}`);
   }
- 
+  const [rating, setRating] = useState(0);
+
+  const fetchRating = useCallback(async () => {
+    const { data, error } = await supabase
+      .from('ratings')
+      .select('rating')
+      .eq('product_id', productId);
+
+    if (error) {
+      console.error('Error fetching rating:', error);
+      return;
+    }
+
+    if (data && data.length > 0) {
+      const avgRating = data.reduce((acc, { rating }) => acc + rating, 0) / data.length;
+      setRating(avgRating);
+    } else {
+      setRating(0); // If no ratings are found, set rating to 0
+    }
+  }, [productId]);
+
+  useEffect(() => {
+    fetchRating();
+  }, [fetchRating]);
+
+  const handleRate = useCallback(async (newRating) => {
+    const { data, error } = await supabase
+      .from('ratings')
+      .insert([{ product_id: productId, rating: newRating }]);
+
+    if (error) {
+      console.error('Error submitting rating:', error);
+      return;
+    }
+
+    fetchRating(); // Re-fetch the updated ratings
+  }, [productId, fetchRating]);
+
+
   return (
     <div className="relative group">
       <div className="relative">
@@ -55,7 +94,6 @@ export default function Product({
           href="#"
         >
           <div className="relative pt-[50%] sm:pt-[60%] lg:pt-[80%] rounded-t-xl overflow-hidden">
-         
             <Image
               className="size-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-t-xl"
               src={firstImageUrl}
@@ -63,6 +101,20 @@ export default function Product({
               height={200}
               alt="Image Description"
             />
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-xl">
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
+                onClick={handleCart}
+              >
+                Add to Cart
+              </button>
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded-md"
+                onClick={handlClick}
+              >
+                Order Now
+              </button>
+            </div>
           </div>
           <div className="p-4 md:p-5">
             <div className="flex justify-between">
@@ -71,34 +123,12 @@ export default function Product({
                 {productPrice}
               </p>
             </div>
-            <div className="flex justify-between mt-3">
-              <div>
-                <FontAwesomeIcon icon={faStar} className="text-amber-300" />
-                <FontAwesomeIcon icon={faStar} className="text-amber-300" />
-                <FontAwesomeIcon icon={faStar} className="text-amber-300" />
-                <FontAwesomeIcon icon={faStar} className="text-amber-300" />
-                <FontAwesomeIcon icon={faStar} className="text-amber-300" />
-              </div>
-              <p className="text-gray-500 dark:text-gray-400">4.6</p>
-            </div>
+           
+            <Star rating={rating} onRate={handleRate} />
           </div>
         </a>
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
-            onClick={handleCart}
-          >
-            Add to Cart
-          </button>
-
-          <button
-            className="bg-green-500 text-white px-4 py-2 rounded-md"
-            onClick={handlClick}
-          >
-            Order Now
-          </button>
-        </div>
       </div>
     </div>
   );
+  
 }

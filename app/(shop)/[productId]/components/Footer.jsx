@@ -7,9 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { addComment } from "../../actions/addComment";
 import { toast } from "react-toastify";
-export default function Footer({publicity,productId,sellerId}) {
+export default function Footer({publicity,productId,sellerId,Date}) {
   const [comment, setComment] = useState('');
-
+  console.log('*******************')
+  console.log('******************* ',Date)
   const arr = [1, 2, 3];
   const currentPage = "details_page_publicity";
   const filteredPublicity = publicity?.filter(

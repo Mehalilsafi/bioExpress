@@ -6,6 +6,7 @@ import getPublicity from "./actions/getPublicity";
 import getCategories from "./actions/getCategories";
 import Product from "./actions/getProduct";
 import getFilterProudct from "./actions/getFilterProudct";
+
 export const revalidate = 0;
 export default async function Home() {
   const publicity = await getPublicity();

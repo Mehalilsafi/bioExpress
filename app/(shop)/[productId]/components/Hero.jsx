@@ -5,11 +5,13 @@ import Product from "./Product";
 import { getProductId } from "../../actions/getProductId";
 import { useParams } from "next/navigation";
 import getPublicity from "@/app/actions/getPublicity";
+import { getDate } from "../../actions/getDate";
 export default async function Hero({ params }) {
   const { productId } = params;
 
   const product = await getProductId(productId);
   const publicity = await getPublicity();
+  const Date=await getDate()
 
   const gallery = product.images;
 
@@ -23,7 +25,7 @@ export default async function Hero({ params }) {
         <Product product={product} />
       </div>
 
-      <Footer publicity={publicity} productId={productId} sellerId={product?.sellerId}/>
+      <Footer publicity={publicity} productId={productId} sellerId={product?.sellerId} Date={Date}/>
     </div>
   );
 }
