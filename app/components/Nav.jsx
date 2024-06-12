@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"; // Specific Font Awesome icons
 
 import logo from "@/assets/logo.svg"; // Image asset for logo
+import Dropdown from "./Dropdown";
 
 
 export default function Nav() {
@@ -32,8 +33,9 @@ export default function Nav() {
 
       <div className="flex justify-start items-center gap-[15px] p-2.5 mr-5  ">
       <Link href="/wishlist"><FontAwesomeIcon icon={faCartShopping} className="text-xl font-light" /></Link> 
-        <FontAwesomeIcon icon={faUser} className="text-xl font-light" />
+          <Dropdown/>
       </div>
+   
     </header>
   );
 }
