@@ -2,8 +2,17 @@
 import React from "react";
 import order from "../actions/order";
 import { useCartStore } from "@/lib/stor";
-export default function Form() {
+import { toast } from "react-toastify";
+export default function Form({data ,error}) {
+  
   const cartItems = useCartStore((state) => state.cartItems);
+  function handlSubmit(data) {
+    if (data) {
+      toast.success("Order added successfully!");
+    } else {
+      toast.error(error);
+    }
+  }
   return (
     <div>
        <div className="flex flex-col gap-5 ">
@@ -64,10 +73,11 @@ export default function Form() {
               name="phoneNumber"
             />
           </div>
-          <input type="hidden" name="productes" value={cartItems} />
+          <input type="hidden" name="productes" value={JSON.stringify(cartItems)} />
           <button
             type="submit"
             className="py-3 px-4  items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#C5DCA0] text-gray-900 hover:bg-[#A4CE4A] disabled:opacity-50 disabled:pointer-events-none dark:bg-white dark:text-neutral-800 flex justify-center w-full "
+            onClick={handlSubmit}
           >
             Confirm
           </button>

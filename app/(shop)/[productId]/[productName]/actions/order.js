@@ -2,17 +2,13 @@
 import { supabase } from "@/app/db/supabase";
 
 export default async function order(formData) {
-  const firstName = formData.get("firstName");
-  const lastName = formData.get("lastName");
-  const address = formData.get("adress");
-  const city = formData.get("ville");
-  const postalCode = formData.get("codePostal");
-  const phoneNumber = formData.get("phoneNumber");
-  const productsArray = formData
-    .get("productes")
-    .split(",")
-    .map((item) => JSON.parse(item));
-  const cart = JSON.stringify(productsArray);
+  const firstName = formData?.get("firstName");
+  const lastName = formData?.get("lastName");
+  const address = formData?.get("adress");
+  const city = formData?.get("ville");
+  const postalCode = formData?.get("codePostal");
+  const phoneNumber = formData?.get("phoneNumber");
+  const cartItmes = formData?.get("productes");
 
   try {
     const { data, error } = await supabase
@@ -25,7 +21,7 @@ export default async function order(formData) {
           ville: city,
           codePostal: postalCode,
           phoneNumber: phoneNumber,
-          productes: cart,
+          productes: cartItmes,
         },
       ])
       .select();
