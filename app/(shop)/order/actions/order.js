@@ -2,13 +2,13 @@
 import { supabase } from "@/app/db/supabase";
 
 export default async function order(formData) {
-  const firstName = formData.get("firstName");
-  const lastName = formData.get("lastName");
-  const address = formData.get("adress");
-  const city = formData.get("ville");
-  const postalCode = formData.get("codePostal");
-  const phoneNumber = formData.get("phoneNumber");
-  const cartItmes = formData.get("productes");
+  const firstName = formData?.get("firstName");
+  const lastName = formData?.get("lastName");
+  const address = formData?.get("adress");
+  const city = formData?.get("ville");
+  const postalCode = formData?.get("codePostal");
+  const phoneNumber = formData?.get("phoneNumber");
+  const cartItmes = formData?.get("productes");
 
   try {
     const { data, error } = await supabase

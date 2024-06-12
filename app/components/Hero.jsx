@@ -28,7 +28,7 @@ export default  function Hero({ publicity, proudct }) {
   const filteredPublicity = publicity.filter(
     (item) => item.page == currentPage
   );
-  console.log("filterd page depend on the page Name", filteredPublicity);
+  
 
   return (
     <div className=" rounded-md m-4">
@@ -48,6 +48,7 @@ export default  function Hero({ publicity, proudct }) {
               productPrice={product.productPrice}
               productImages={product.images}
               ProductDescription={product.description}
+              sellerId={product?.sellerId}
             />
           ))}
         </div>

@@ -1,8 +1,11 @@
 import React from 'react'
 import Hero from './components/Hero'
-export default function page() {
+import order from './actions/order'
+
+export default async function page() {
+  const {data,error} =await order() 
   return (
   
-    <div>  <Hero/></div>
+    <div>  <Hero data={data}/></div>
   )
 }

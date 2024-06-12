@@ -1,15 +1,15 @@
 "use client";
-import React, { useState ,useEffect,useCallback} from "react"; // React components
+import React, { useState, useEffect, useCallback } from "react"; // React components
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { supabase } from '@/app/db/supabase';
+import { supabase } from "@/app/db/supabase";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/lib/stor";
-import Rating from './Rating'; // Adjust the path as necessary
-import Star from './Star'; // Adjust the path as necessary
+import Rating from "./Rating"; // Adjust the path as necessary
+import Star from "./Star"; // Adjust the path as necessary
 
 export default function Product({
   productId,
@@ -17,8 +17,10 @@ export default function Product({
   productName,
   productPrice,
   ProductDescription,
+  sellerId,
 }) {
-    const firstImageUrl = productImages && productImages.length > 0 ? productImages[0] : null;
+  const firstImageUrl =
+    productImages && productImages.length > 0 ? productImages[0] : null;
   const cartItems = useCartStore((state) => state.cartItems);
   const { addItemToCart } = useCartStore();
   const product = {
@@ -26,7 +28,8 @@ export default function Product({
     productUrl: firstImageUrl,
     productName: productName,
     productPrice: productPrice,
-    description:ProductDescription,
+    description: ProductDescription,
+    sellerId:sellerId,
   };
 
   function handleCart() {
@@ -51,17 +54,18 @@ export default function Product({
 
   const fetchRating = useCallback(async () => {
     const { data, error } = await supabase
-      .from('ratings')
-      .select('rating')
-      .eq('product_id', productId);
+      .from("ratings")
+      .select("rating")
+      .eq("product_id", productId);
 
     if (error) {
-      console.error('Error fetching rating:', error);
+      console.error("Error fetching rating:", error);
       return;
     }
 
     if (data && data.length > 0) {
-      const avgRating = data.reduce((acc, { rating }) => acc + rating, 0) / data.length;
+      const avgRating =
+        data.reduce((acc, { rating }) => acc + rating, 0) / data.length;
       setRating(avgRating);
     } else {
       setRating(0); // If no ratings are found, set rating to 0
@@ -72,19 +76,21 @@ export default function Product({
     fetchRating();
   }, [fetchRating]);
 
-  const handleRate = useCallback(async (newRating) => {
-    const { data, error } = await supabase
-      .from('ratings')
-      .insert([{ product_id: productId, rating: newRating }]);
+  const handleRate = useCallback(
+    async (newRating) => {
+      const { data, error } = await supabase
+        .from("ratings")
+        .insert([{ product_id: productId, rating: newRating }]);
 
-    if (error) {
-      console.error('Error submitting rating:', error);
-      return;
-    }
+      if (error) {
+        console.error("Error submitting rating:", error);
+        return;
+      }
 
-    fetchRating(); // Re-fetch the updated ratings
-  }, [productId, fetchRating]);
-
+      fetchRating(); // Re-fetch the updated ratings
+    },
+    [productId, fetchRating]
+  );
 
   return (
     <div className="relative group">
@@ -123,12 +129,11 @@ export default function Product({
                 {productPrice}
               </p>
             </div>
-           
+
             <Star rating={rating} onRate={handleRate} />
           </div>
         </a>
       </div>
     </div>
   );
-  
 }
