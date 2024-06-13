@@ -9,12 +9,12 @@ import getFilterProudct from "./actions/getFilterProudct";
 
 export const revalidate = 0;
 export default async function Home() {
-  const publicity = await getPublicity();
+   const publicity = await getPublicity();
   const categories = await getCategories();
   const proudct = await Product();
-  //const FilterProduct = await getFilterProudct();
+   //const FilterProduct = await getFilterProudct();
 
-  return (
+   return (
     <>
       {/* Your application components */}
       <Nav />
