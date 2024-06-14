@@ -1,16 +1,10 @@
-// 'use client';
-
 import NewProductModal from './product-modal';
-
 import { getProducts } from '../actions/get-products';
-
 import EditProductButton from './edit-modal';
 import DeleteButton from './delete-button';
 
 async function ProductsTable() {
     const products = await getProducts();
-
-    // Sample products data
 
     return (
         <div>
@@ -39,6 +33,9 @@ async function ProductsTable() {
                                         <th className='px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase'>
                                             Quantity
                                         </th>
+                                        <th className='px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase'>
+                                            Rating
+                                        </th>
                                         <th className='px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase'>
                                             <button
                                                 type='button'
@@ -59,13 +56,13 @@ async function ProductsTable() {
                                             <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
                                                 {product.productPrice}
                                             </td>
-                                            <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
+                                            <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200 flex'>
                                                 {product.images?.map(
                                                     (el, index) => (
                                                         <img
                                                             key={index}
                                                             src={el}
-                                                            className='h-12 w-12'
+                                                            className='h-12 w-12 mr-2'
                                                         />
                                                     )
                                                 )}
@@ -81,6 +78,12 @@ async function ProductsTable() {
                                             </td>
                                             <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
                                                 {product.quantity}
+                                            </td>
+                                            <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200'>
+                                                {(
+                                                    product.avgRating * 5
+                                                ).toFixed(1)}{' '}
+                                                / 5
                                             </td>
                                             <td>
                                                 <div className='flex gap-3 items-center'>
