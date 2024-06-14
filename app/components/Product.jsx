@@ -33,6 +33,7 @@ export default function Product({
   };
 
   function handleCart() {
+   
     const isProductInCart = cartItems.some(
       (item) => item.productId === product.productId
     );
@@ -48,6 +49,7 @@ export default function Product({
   const router = useRouter();
 
   function handlClick() {
+    
     router.push(`/${productId}`);
   }
   const [rating, setRating] = useState(0);

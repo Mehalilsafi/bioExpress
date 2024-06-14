@@ -3,8 +3,7 @@ import '../globals.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import PrelineScript from '../components/PrelineScript';
-
-import Nav from '../components/Nav';
+import Nav from '../components/NavBar';
 config.autoAddCss = false;
 const inter = Inter({ subsets: ['latin'] });
 

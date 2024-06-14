@@ -34,7 +34,7 @@ export default  function Hero({ publicity, proudct }) {
     <div className=" rounded-md m-4">
       <div className="flex flex-row justify-between items-center  my-5">
         <h1 className="text-xl sm:text-2xl font-medium mb-2 sm:mb-0 p-3 md:p-0">
-          Showing Results for <span className="text-[#A4CE4A]">Food</span>
+          Showing Results for <span className="text-[#A4CE4A]">Jam</span>
         </h1>
       </div>
 
