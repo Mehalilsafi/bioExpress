@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+
 import sidBarImage from "@/assets/sidebare.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,8 +25,8 @@ export default function SideBar({ publicity, categories }) {
     Name: category.categoryName,
   }));
   const itemsButtom = [
-    { icon: faGlobe, text: "Our scial " },
-    { icon: faComment, text: "About Us" },
+    // { icon: faGlobe, text: "Our scial " },
+    { icon: faComment, text: "About Us", link:"/AboutUs" },
   ];
   const useGetCategories = useCategory((state) => state.categoryName);
   //   function andleFilter(category) {
