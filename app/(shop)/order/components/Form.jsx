@@ -4,15 +4,15 @@ import order from "../actions/order";
 import { useCartStore } from "@/lib/stor";
 import { useSelected } from "@/lib/stor";
 import { toast } from "react-toastify";
-export default function Form(data) {
-  const cartItems = useSelected((state) => state.selectedProducts);
-  function handlSubmit(data) {
-    if (data) {
-      toast.success("Order added successfully!");
-    } else {
-      toast.error("check again please ");
-    }
-  }
+export default function Form({products}) {
+  //function handlSubmit(data) {
+   // if (data) {
+    //  toast.success("Order added successfully!");
+   // } else {
+   //   toast.error("check again please ");
+   // }
+  //}
+  console.log("array of prooduect :",products)
   return (
     <div>
       <div className="flex flex-col gap-5 ">
@@ -76,12 +76,12 @@ export default function Form(data) {
           <input
             type="hidden"
             name="productes"
-            value={JSON.stringify(cartItems)}
+            value={JSON.stringify(products)}
           />
           <button
             type="submit"
             className="py-3 px-4  items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#C5DCA0] text-gray-900 hover:bg-[#A4CE4A] disabled:opacity-50 disabled:pointer-events-none dark:bg-white dark:text-neutral-800 flex justify-center w-full "
-            onClick={handlSubmit}
+            //onClick={handlSubmit}
           >
             Confirm
           </button>

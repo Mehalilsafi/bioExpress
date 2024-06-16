@@ -4,39 +4,7 @@ import Image from "next/image";
 import { useCartStore } from "@/lib/stor";
 import { useSelected } from "@/lib/stor";
 import { supabase } from "@/app/db/supabase";
-export default function Price() {
-  const cartItems = useSelected((state) => state.selectedProducts);
-  console.log("cart itmes for order page", cartItems);
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      if (cartItems.length > 0) {
-        try {
-          const { data, error } = await supabase
-            .from("products")
-            .select("*")
-            .in("id", cartItems);
-
-          if (error) {
-            console.error("Error fetching products:", error);
-          } else {
-            setProducts(data);
-          }
-        } catch (error) {
-          console.error("Error fetching products:", error);
-        } finally {
-          setLoading(false);
-        }
-      } else {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, [cartItems]);
-
+export default function Price({ loading, products }) {
   if (loading) {
     return <div>Loading...</div>;
   }

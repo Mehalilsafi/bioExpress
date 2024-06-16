@@ -3,9 +3,11 @@ import Hero from './components/Hero'
 import order from './actions/order'
 
 export default async function page() {
-  const {data,error} =await order() 
+  //const {data,error} =await order() 
   return (
   
-    <div>  <Hero data={data}/></div>
+    <div>  <Hero 
+    //data={data}
+    /></div>
   )
 }
