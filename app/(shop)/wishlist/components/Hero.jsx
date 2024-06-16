@@ -8,33 +8,29 @@ import Empty from "@/assets/emtyCart.jpg";
 import Product from "./Product";
 
 import { useCartStore } from "@/lib/stor";
+import { useSelected } from "@/lib/stor";
 import Link from "next/link";
 
 export default function Hero({ publicity }) {
   const cartItems = useCartStore((state) => state.cartItems);
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  const { selectedProducts, setSelectedProducts, toggleSelectedProduct } = useSelected();
 
   const handleSelectAll = () => {
     if (selectedProducts.length === cartItems.length) {
       setSelectedProducts([]);
     } else {
-      setSelectedProducts([...cartItems.map((item) => item.productId)]);
+      setSelectedProducts(cartItems.map((item) => item.productId));
     }
   };
 
   const handleSelectProduct = (productId) => {
-    if (selectedProducts.includes(productId)) {
-      setSelectedProducts(selectedProducts.filter((id) => id !== productId));
-    } else {
-      setSelectedProducts([...selectedProducts, productId]);
-    }
+    toggleSelectedProduct(productId);
   };
-
+  console.log("selceted productes in wishlist", selectedProducts);
   const currentPage = "products_page_publicity";
   const filteredPublicity = publicity?.filter(
     (item) => item.page == currentPage
   );
-  console.log("filterd page depend on the page Name", filteredPublicity);
 
   return (
     <div className="m-4">
@@ -65,7 +61,7 @@ export default function Hero({ publicity }) {
           </label>
         </div>
         <Link
-         href='/order'
+          href="/order"
           className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-[#A4CE4A] hover:border-[#eaffe9]  disabled:opacity-50 disabled:pointer-events-none dark:border-white dark:text-white dark:hover:text-gray-300 dark:hover:border-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 bg-[#A4CE4A] "
         >
           order now

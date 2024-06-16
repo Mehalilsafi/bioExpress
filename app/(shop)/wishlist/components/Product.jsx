@@ -13,7 +13,7 @@ export default function Product({ Products, selectedProducts, onSelect }) {
   function handleDelete(productId) {
     deleteItemFromCart(productId);
   }
-
+ // const maxQuantity = Math.floor(Products?.quantity * 0.7); 
   return (
     <div className="flex flex-col gap-5 ">
       {Products.map((product) => (
@@ -41,7 +41,7 @@ export default function Product({ Products, selectedProducts, onSelect }) {
             </p>
           </div>
           <div className="flex items-end gap-[10px]">
-            <Counter />
+          <Counter maxQuantity={Math.floor(product?.quantity * 0.7)} />
             <FontAwesomeIcon
               icon={faTrash}
               className="mb-3"

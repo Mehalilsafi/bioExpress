@@ -2,9 +2,10 @@
 import React from "react";
 import order from "../actions/order";
 import { useCartStore } from "@/lib/stor";
+import { useSelected } from "@/lib/stor";
 import { toast } from "react-toastify";
 export default function Form(data) {
-  const cartItems = useCartStore((state) => state.cartItems);
+  const cartItems = useSelected((state) => state.selectedProducts);
   function handlSubmit(data) {
     if (data) {
       toast.success("Order added successfully!");
