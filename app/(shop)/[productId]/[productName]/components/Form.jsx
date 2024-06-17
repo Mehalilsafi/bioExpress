@@ -3,9 +3,7 @@ import React from "react";
 import order from "../actions/order";
 import { useCartStore } from "@/lib/stor";
 import { toast } from "react-toastify";
-export default function Form({data ,error}) {
-  
-  const cartItems = useCartStore((state) => state.cartItems);
+export default function Form({ data, error, product }) {
   function handlSubmit(data) {
     if (data) {
       toast.success("Order added successfully!");
@@ -15,7 +13,7 @@ export default function Form({data ,error}) {
   }
   return (
     <div>
-       <div className="flex flex-col gap-5 ">
+      <div className="flex flex-col gap-5 ">
         <h1>Delivery</h1>
         <form action={order} className="flex flex-col gap-5">
           <div className="grid grid-cols-4  gap-5 w-full">
@@ -73,7 +71,11 @@ export default function Form({data ,error}) {
               name="phoneNumber"
             />
           </div>
-          <input type="hidden" name="productes" value={JSON.stringify(cartItems)} />
+          <input
+            type="hidden"
+            name="productes"
+            value={JSON.stringify(product)}
+          />
           <button
             type="submit"
             className="py-3 px-4  items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#C5DCA0] text-gray-900 hover:bg-[#A4CE4A] disabled:opacity-50 disabled:pointer-events-none dark:bg-white dark:text-neutral-800 flex justify-center w-full "
