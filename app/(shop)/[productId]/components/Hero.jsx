@@ -13,7 +13,7 @@ export default async function Hero({ params }) {
   const publicity = await getPublicity();
   const Date=await getDate()
 
-  const gallery = product.images;
+  const gallery = product?.images;
 
   return (
     <div className="m-6">

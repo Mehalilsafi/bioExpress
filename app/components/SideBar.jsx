@@ -93,7 +93,7 @@ export default function SideBar({ publicity, categories }) {
               />
               <p
                 className="hover:text-[#A4CE4A]"
-                onClick={()=>HandleFilter(item.categoryName)}
+                onClick={() => HandleFilter(item.categoryName)}
               >
                 {item.categoryName}
               </p>
@@ -102,18 +102,15 @@ export default function SideBar({ publicity, categories }) {
         </div>
 
         <div className="flex flex-col w-full justify-center gap-4 m-3">
-          {itemsButtom.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-start  p-2 gap-3"
-            >
-              <FontAwesomeIcon
-                icon={item.icon}
-                className="text-xl font-light text-[#A4CE4A]"
-              />
-              <p>{item.text}</p>
-            </div>
-          ))}
+          <div className="flex items-center justify-start  p-2 gap-3">
+            <FontAwesomeIcon
+              icon={faComment}
+              className="text-xl font-light text-[#A4CE4A]"
+            />
+            <Link href='/aboutUs'>
+            <p>About Us</p>
+            </Link>
+          </div>
         </div>
 
         {filteredPublicity?.length > 0 && (
