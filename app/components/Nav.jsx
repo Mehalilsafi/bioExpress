@@ -17,7 +17,9 @@ import Dropdown from "./Dropdown";
 export default function Nav() {
   return (
     <header className="flex w-full items-center justify-between fixed top-0 bg-white z-[50] ml-4 ">
+      <Link href='/'>
       <Image src={logo} width={130}  alt="Picture of the author" />
+      </Link>
 
       <div className="relative">
         <FontAwesomeIcon
