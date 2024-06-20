@@ -107,6 +107,7 @@ const Hero = ({ publicity }) => {
                 productImages={product.images}
                 productDescription={product.description}
                 sellerId={product?.sellerId}
+                quantity={product?.quantity}
               />
             ))
           ) : (

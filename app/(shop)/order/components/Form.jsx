@@ -4,6 +4,7 @@ import order from "../actions/order";
 import { useCartStore } from "@/lib/stor";
 import { useSelected } from "@/lib/stor";
 import { toast } from "react-toastify";
+import { useQuantity } from "@/lib/stor";
 export default function Form({products}) {
   //function handlSubmit(data) {
    // if (data) {
@@ -12,7 +13,14 @@ export default function Form({products}) {
    //   toast.error("check again please ");
    // }
   //}
-  console.log("array of prooduect :",products)
+  const { counters, increment, decrement } = useQuantity();
+  console.log("quantities products:",counters)
+  console.log("array of products:",products)
+  const updatedProducts = products.map(product => ({
+    ...product,
+    quantity: counters[product.id] || 0,
+  }));
+  console.log("updated products:",updatedProducts)
   return (
     <div>
       <div className="flex flex-col gap-5 ">
@@ -76,7 +84,7 @@ export default function Form({products}) {
           <input
             type="hidden"
             name="productes"
-            value={JSON.stringify(products)}
+            value={JSON.stringify(updatedProducts)}
           />
           <button
             type="submit"

@@ -41,7 +41,7 @@ export default function Product({ Products, selectedProducts, onSelect }) {
             </p>
           </div>
           <div className="flex items-end gap-[10px]">
-          <Counter maxQuantity={Math.floor(product?.quantity * 0.7)} />
+          <Counter maxQuantity={Math.floor(product?.quantity * 0.7)} productId={product.productId} />
             <FontAwesomeIcon
               icon={faTrash}
               className="mb-3"

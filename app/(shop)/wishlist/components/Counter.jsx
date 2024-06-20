@@ -1,36 +1,41 @@
 "use client";
-import React, { useState } from "react";
-import { toast } from "react-toastify";
-export default function Counter({ maxQuantity }) {
-  const [counter, setCounter] = useState(0);
-  const increment = () => {
+import { useEffect } from 'react';
+
+import { toast } from 'react-toastify';
+import { useQuantity } from '@/lib/stor';
+
+export default function Counter({ maxQuantity, productId }) {
+  const { counters, increment, decrement } = useQuantity();
+  const counter = counters[productId] || 0;
+
+  useEffect(() => {
+    console.log("Counter updated for product:", productId, "New Counter Value:", counter);
+  }, [counter, productId]);
+
+  const handleIncrement = () => {
+    console.log("Increment called. Counter:", counter, "MaxQuantity:", maxQuantity, 'ProductId:', productId);
     if (counter < maxQuantity) {
-      setCounter(counter + 1);
-      console.log(("maxQuantity:"),maxQuantity)
+      increment(productId, maxQuantity);
     } else {
-      toast.error(
-        "You have reached the maximum allowable quantity for this product."
-      );
-      console.log(("maxQuantity:"),maxQuantity)
+      toast.error("You have reached the maximum allowable quantity for this product.");
     }
   };
-  const decrement = () => {
-    if (counter > 0) setCounter(counter - 1);
-    else {
-      setCounter(0);
-    }
+
+  const handleDecrement = () => {
+    decrement(productId);
   };
+
   return (
-    <div className="flex gap-2  items-center">
+    <div className="flex gap-2 items-center">
       <button
-        onClick={decrement}
+        onClick={handleDecrement}
         className="px-4 py-2 bg-[#C5DCA0] text-white font-semibold rounded-lg hover:bg-opacity-80"
       >
         -
       </button>
       <p className="text-xl font-bold">{counter}</p>
       <button
-        onClick={increment}
+        onClick={handleIncrement}
         className="px-4 py-2 bg-[#C5DCA0] text-white font-semibold rounded-lg hover:bg-opacity-80"
       >
         +

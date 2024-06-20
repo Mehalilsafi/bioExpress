@@ -1,11 +1,10 @@
 import React from "react";
 import Image from "next/image";
 export default function Price({ product }) {
-   const productImages=product?.images
-   console.log('"""""""""""""""""""""""""""""""""""""""""""""')
-  console.log(productImages+ "the jason for images ")
-  console.log('"""""""""""""""""""""""""""""""""""""""""""""')
-  const firstImageUrl = productImages && productImages?.length > 0 ? productImages[0] : null;
+  const productImages = product?.images;
+
+  const firstImageUrl =
+    productImages && productImages?.length > 0 ? productImages[0] : null;
   return (
     <div className="lg:border-l-[1px] lg:border-inherit lg:border-solid h-full ">
       <div className="flex flex-row justify-between m-4 w-full ">

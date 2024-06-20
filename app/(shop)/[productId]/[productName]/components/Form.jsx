@@ -4,7 +4,7 @@ import order from "../actions/order";
 import { useCartStore } from "@/lib/stor";
 import { toast } from "react-toastify";
 import { z } from "zod";
-
+import { useStore } from "@/lib/stor";
 // Define Zod schema for form validation
 const formSchema = z.object({
   firstName: z.string().min(1, "First Name is required").regex(/^[A-Za-z]+$/, "First Name can only contain letters"),
@@ -17,6 +17,14 @@ const formSchema = z.object({
 });
 
 export default function Form({ data, error, product }) {
+  const userQuantity = useStore((state) => state.counter);
+  console.log('userQuantity :',userQuantity)
+  console.log('product:',product)
+  const updatedProduct = product.map((item) => ({
+    ...item,
+    userQuantity,
+  }));
+  console.log('updatedProduct:', updatedProduct);
   const [formData, setFormData] = React.useState({
     firstName: "",
     lastName: "",
@@ -24,7 +32,7 @@ export default function Form({ data, error, product }) {
     codePostal: "",
     ville: "",
     phoneNumber: "",
-    productes: JSON.stringify(product),
+    productes: JSON.stringify(updatedProduct),
   });
 
   const handleChange = (e) => {

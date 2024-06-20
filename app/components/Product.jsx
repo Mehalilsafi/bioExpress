@@ -18,6 +18,7 @@ export default function Product({
   productPrice,
   ProductDescription,
   sellerId,
+  quantity,
 }) {
   const firstImageUrl =
     productImages && productImages.length > 0 ? productImages[0] : null;
@@ -30,6 +31,7 @@ export default function Product({
     productPrice: productPrice,
     description: ProductDescription,
     sellerId:sellerId,
+    quantity:quantity,
   };
 
   function handleCart() {
