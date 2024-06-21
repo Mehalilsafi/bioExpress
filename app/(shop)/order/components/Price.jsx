@@ -11,13 +11,13 @@ function Price({ products }) {
   // Map over products to include counter values
   const updatedProducts = products.map(product => ({
     ...product,
-    quantity: counters[product.id] || 0,
+    UserQuantity: counters[product.id] || 0,
   }));
 
   console.log("Updated products:", updatedProducts);
 
   // Calculate the total price
-  const totalPrice = updatedProducts.reduce((sum, product) => sum + (product.productPrice * product.quantity), 0);
+  const totalPrice = updatedProducts.reduce((sum, product) => sum + (product.productPrice * product.UserQuantity), 0);
 
   return (
     <div className="lg:border-l-[1px] lg:border-inherit lg:border-solid h-full">
@@ -34,7 +34,7 @@ function Price({ products }) {
                 />
                 <div>
                   <p>{product.productName}</p>
-                  <p>Quantity: {product.quantity}</p>
+                  <p>Quantity: {product.UserQuantity}</p>
                 </div>
               </div>
               <p>{`${product.productPrice} DA`}</p>
@@ -43,13 +43,13 @@ function Price({ products }) {
             <div className="flex flex-col m-4 gap-4">
               <div className="flex flex-row justify-between">
                 <p>Sub-total</p>
-                <p>{`${product.productPrice * product.quantity} DA`}</p>
+                <p>{`${product.productPrice * product.UserQuantity} DA`}</p>
               </div>
             </div>
 
             <div className="flex flex-row justify-between m-4 w-full">
               <p>Total</p>
-              <p>{`${product.productPrice * product.quantity} DA`}</p>
+              <p>{`${product.productPrice * product.UserQuantity} DA`}</p>
             </div>
           </div>
         ))}

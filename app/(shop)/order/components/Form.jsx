@@ -18,7 +18,7 @@ export default function Form({products}) {
   console.log("array of products:",products)
   const updatedProducts = products.map(product => ({
     ...product,
-    quantity: counters[product.id] || 0,
+    UserQuantity: counters[product.id] || 0,
   }));
   console.log("updated products:",updatedProducts)
   return (

@@ -17,12 +17,12 @@ const formSchema = z.object({
 });
 
 export default function Form({ data, error, product }) {
-  const userQuantity = useStore((state) => state.counter);
-  console.log('userQuantity :',userQuantity)
+  const UserQuantity = useStore((state) => state.counter);
+  console.log('userQuantity :',UserQuantity)
   console.log('product:',product)
   const updatedProduct = product.map((item) => ({
     ...item,
-    userQuantity,
+    UserQuantity,
   }));
   console.log('updatedProduct:', updatedProduct);
   const [formData, setFormData] = React.useState({
