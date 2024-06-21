@@ -6,7 +6,7 @@ import { useQuantity } from '@/lib/stor';
 
 export default function Counter({ maxQuantity, productId }) {
   const { counters, increment, decrement } = useQuantity();
-  const counter = counters[productId] || 0;
+  const counter = counters[productId] || 1;
 
   useEffect(() => {
     console.log("Counter updated for product:", productId, "New Counter Value:", counter);
