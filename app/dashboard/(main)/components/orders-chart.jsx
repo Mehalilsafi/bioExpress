@@ -32,9 +32,10 @@ const OrdersChart = () => {
                 }
 
                 // Calculate the sum of product prices
-                const productSum = JSON.parse(
-                    JSON.stringify(order.productes)
-                ).reduce((sum, product) => sum + product.productPrice, 0);
+                const productSum = JSON.parse(order.productes).reduce(
+                    (sum, product) => sum + product.productPrice,
+                    0
+                );
                 acc[date].productSum += productSum;
 
                 return acc;

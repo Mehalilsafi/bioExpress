@@ -40,6 +40,9 @@ async function OrdersPage() {
                                                 Products
                                             </th>
                                             <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
+                                                Quantity
+                                            </th>
+                                            <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
                                                 Total Price
                                             </th>
                                             <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
@@ -76,12 +79,27 @@ async function OrdersPage() {
                                                     </ul>
                                                 </td>
                                                 <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+                                                    {order.products.reduce(
+                                                        (total, product) =>
+                                                            total +
+                                                            parseFloat(
+                                                                product.UserQuantity
+                                                            ),
+                                                        0
+                                                    )}
+                                                </td>
+                                                <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
                                                     $
                                                     {order.products
                                                         .reduce(
                                                             (total, product) =>
                                                                 total +
-                                                                product.productPrice,
+                                                                parseFloat(
+                                                                    product.productPrice
+                                                                ) *
+                                                                    parseFloat(
+                                                                        product.UserQuantity
+                                                                    ),
                                                             0
                                                         )
                                                         .toFixed(2)}

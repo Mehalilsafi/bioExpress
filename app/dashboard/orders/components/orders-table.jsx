@@ -37,13 +37,12 @@ const OrdersTable = ({ orders, drivers }) => {
         }
     };
 
-    const handleCancel = (userId) => {
-        // Handle cancel action for user with userId
-    };
-
     const handleConfirm = (orderId) => {
+        console.log('====================================');
+        console.log(orderId);
+        console.log('====================================');
         setSelectedOrderId(orderId);
-        document.querySelector('[data-hs-overlay="#hs-basic-modal"]').click();
+        // document.querySelector('[data-hs-overlay="#hs-basic-modal"]').click();
     };
 
     const handleDelete = async (orderId) => {
@@ -62,10 +61,13 @@ const OrdersTable = ({ orders, drivers }) => {
         if (selectedDriver) {
             await asignToDelivery(selectedOrderId, selectedDriver);
             setSelectedOrderId(null);
-            document
-                .querySelector('[data-hs-overlay="#hs-basic-modal"]')
-                .click();
+            // document
+            //     .querySelector('[data-hs-overlay="#hs-basic-modal"]')
+            //     .click();
         }
+        console.log('====================================');
+        console.log(selectedOrderId, selectedDriver);
+        console.log('====================================');
     };
 
     return (
@@ -84,6 +86,7 @@ const OrdersTable = ({ orders, drivers }) => {
                                     <th className='px-4 py-3'>Phone Number</th>
                                     <th className='px-4 py-3'>Created At</th>
                                     <th className='px-4 py-3'>Status</th>
+                                    <th className='px-4 py-3'></th>
                                     <th className='px-4 py-3'></th>
                                     <th className='px-4 py-3'></th>
                                 </tr>
@@ -137,13 +140,11 @@ const OrdersTable = ({ orders, drivers }) => {
                                             <td
                                                 className='p-4'
                                                 onClick={() =>
-                                                    toggleDescription(
-                                                        order.userId
-                                                    )
+                                                    toggleDescription(order.id)
                                                 }
                                             >
                                                 <div
-                                                    id={`${order.userId}Toggle`}
+                                                    id={`${order.id}Toggle`}
                                                     className='text-white bg-gray-100 border rounded-lg px-4 py-4 text-center inline-flex items-center'
                                                 >
                                                     <svg
@@ -157,7 +158,7 @@ const OrdersTable = ({ orders, drivers }) => {
                                             </td>
                                         </tr>
                                         <tr
-                                            id={`${order.userId}Description`}
+                                            id={`${order.id}Description`}
                                             className='hidden py-4 px-4 border-t border-gray-200'
                                         >
                                             <td colSpan='10'>
@@ -173,38 +174,54 @@ const OrdersTable = ({ orders, drivers }) => {
                                                             <th className='px-4 py-2'>
                                                                 Product Quantity
                                                             </th>
+                                                            <th className='px-4 py-2'>
+                                                                Total
+                                                            </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {JSON.parse(
-                                                            JSON.stringify(
+                                                        {order.productes &&
+                                                            JSON.parse(
                                                                 order.productes
-                                                            )
-                                                        ).map(
-                                                            (product, idx) => (
-                                                                <tr
-                                                                    key={idx}
-                                                                    className='border-b border-gray-200'
-                                                                >
-                                                                    <td className='px-4 py-2 text-center'>
-                                                                        {
-                                                                            product.productName
+                                                            ).map(
+                                                                (
+                                                                    product,
+                                                                    idx
+                                                                ) => (
+                                                                    <tr
+                                                                        key={
+                                                                            idx
                                                                         }
-                                                                    </td>
-                                                                    <td className='px-4 py-2 text-center'>
-                                                                        $
-                                                                        {
-                                                                            product.productPrice
-                                                                        }
-                                                                    </td>
-                                                                    <td className='px-4 py-2 text-center'>
-                                                                        {
-                                                                            product.quantity
-                                                                        }
-                                                                    </td>
-                                                                </tr>
-                                                            )
-                                                        )}
+                                                                        className='border-b border-gray-200'
+                                                                    >
+                                                                        <td className='px-4 py-2 text-center'>
+                                                                            {
+                                                                                product.productName
+                                                                            }
+                                                                        </td>
+                                                                        <td className='px-4 py-2 text-center'>
+                                                                            $
+                                                                            {
+                                                                                product.productPrice
+                                                                            }
+                                                                        </td>
+                                                                        <td className='px-4 py-2 text-center'>
+                                                                            {
+                                                                                product.UserQuantity
+                                                                            }
+                                                                        </td>
+                                                                        <td className='px-4 py-2 text-center'>
+                                                                            {parseFloat(
+                                                                                product.UserQuantity
+                                                                            ) *
+                                                                                parseFloat(
+                                                                                    product.productPrice
+                                                                                )}{' '}
+                                                                            $
+                                                                        </td>
+                                                                    </tr>
+                                                                )
+                                                            )}
                                                     </tbody>
                                                 </table>
                                             </td>
