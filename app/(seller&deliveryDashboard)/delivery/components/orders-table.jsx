@@ -135,9 +135,9 @@ const OrdersTable = ({ orders }) => {
                                                     </thead>
                                                     <tbody>
                                                         {JSON.parse(
-                                                            JSON.stringify(
+                                                            
                                                                 order.productes
-                                                            )
+                                                            
                                                         ).map(
                                                             (product, idx) => (
                                                                 <tr
