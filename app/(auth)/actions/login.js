@@ -3,7 +3,6 @@
 import { supabaseServer } from '@/app/db/supaBaseServer';
 import { redirect } from 'next/navigation';
 
-
 export const loginUser = async (email, password) => {
     let { data: user } = await supabaseServer.auth.signInWithPassword({
         email,
@@ -42,5 +41,9 @@ export const loginUser = async (email, password) => {
         }
 
         redirect('/dashboard');
+
+        console.log('====================================');
+        console.log(role);
+        console.log('====================================');
     }
 };
