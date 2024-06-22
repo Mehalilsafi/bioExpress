@@ -1,5 +1,4 @@
 import { supabase } from '../db/supabase';
-
 const uploadImage = async (image) => {
     const { data, error } = await supabase.storage
         .from('productImages')

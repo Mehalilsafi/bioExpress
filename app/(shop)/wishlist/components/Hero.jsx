@@ -41,7 +41,7 @@ export default function Hero({ publicity }) {
           />
           <h1 className="text-2xl font-bold">Wish List</h1>
         </div>
-        <p className="">{`Cart -> Place order -> Pay -> Order Complete`}</p>
+        <p className="">{`Cart -> Select product -> order confirmed `}</p>
       </div>
       <div className="flex justify-between mt-4">
         <div className="flex  items-center">
