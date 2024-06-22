@@ -3,17 +3,16 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import olive from "@/assets/olive.svg";
-import Empty from "@/assets/emtyCart.jpg";
+import Empty from "@/assets/Empty.svg";
 import Product from "./Product";
-
 import { useCartStore } from "@/lib/stor";
 import { useSelected } from "@/lib/stor";
 import Link from "next/link";
 
 export default function Hero({ publicity }) {
   const cartItems = useCartStore((state) => state.cartItems);
-  const { selectedProducts, setSelectedProducts, toggleSelectedProduct } = useSelected();
+  const { selectedProducts, setSelectedProducts, toggleSelectedProduct } =
+    useSelected();
 
   const handleSelectAll = () => {
     if (selectedProducts.length === cartItems.length) {
@@ -76,11 +75,11 @@ export default function Hero({ publicity }) {
           />
         ) : (
           <div className="h-72 flex flex-col items-center justify-center">
-            <h2 className="text-3xl mt-10 mb-5 font-bold">Cart is Empty</h2>
+            
             <Image
               src={Empty}
-              width={500}
-              height={200}
+              width={300}
+              height={100}
               alt="Picture of the author"
             />
             <Link

@@ -21,7 +21,7 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here, you can access form data from formData state
+
     console.log("Form submitted:", formData);
     await loginUser(formData.email, formData.password);
   };

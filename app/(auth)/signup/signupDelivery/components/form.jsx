@@ -128,7 +128,7 @@ const DeliverySignup = () => {
               }`}
             >
               <option value="Student">Student</option>
-              <option value="Homeless">Homeless</option>
+              <option value="Homeless">Jobless</option>
             </select>
             {errors.situation && (
               <span className="text-red-500 text-sm">{errors.situation}</span>
